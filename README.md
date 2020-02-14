@@ -8,7 +8,7 @@ The fundamentals of this spec are:
 2. has group_ids which are safe to share publicly
 3. adding people to the group is done with group's knowledge
 4. supports disclosing of message content
-  - **but this leaks info about the group** (peak at other messages / authors)
+    - **but this leaks info about the group** (peak at other messages / authors)
 
 ## box2 encryption in scuttlebutt
 
@@ -45,5 +45,5 @@ Could modify this spec:
 2. - same
 3. - same
 4. supports privacy fiendly disclosing of message content
-  - all internal cypherlinks are "cloaked"
+    - all internal cypherlinks are "cloaked"
 
