@@ -14,10 +14,10 @@ The fundamentals of this spec are:
 
 In adition to the box2-spec, there are some scuttlebutt-specific specifications
 
-[See spec here](./box2-encryption/README.md)
+[See spec here](./encryption/README.md)
 
 
-## Recipient Key derivation
+## recipient key derivation
 
 box1 took feedIds from the `content.recps` field and directly used these for encryption.
 
@@ -25,17 +25,23 @@ In box2, we take these keys and **derive** a recipient key which is then passed 
 
 How keys are mapped:
 - [cloaked `group_id`s](./group/group-id/README.md)
-- [`feed_id`s]('./direct-messages/README.md')
+- [`feed_id`s](./direct-messages/README.md)
 
 
 ## group management
 
 A minimal amount of agreement to make coordination easier:
-- [creating a new group](./group/create/README.md)
-- [adding someone to your group](./group/entrust/README.md)
+- [creating a new group](./group/init/README.md)
+- [adding someone to your group](./group/add-member/README.md)
 
 
 ---
+
+## TODO
+
+describe
+- how all these things might be woven together
+- where state is tracked off-chain (in a key-store)
 
 
 ## scuttlebutt private-groups spec (v2)

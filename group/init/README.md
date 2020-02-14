@@ -1,4 +1,4 @@
-# Group create
+# Creating a group
 
 This is a spec for how to initialise a new group.
 
@@ -6,7 +6,7 @@ Minimally, messages following this spec have `content` like
 
 ```js
 var content = {
-  type: 'group'
+  type: 'group/init'
   name: { set: 'pacific butts consortium' },  // optional
   tangles: {
     group: {

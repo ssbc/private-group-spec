@@ -13,7 +13,7 @@ map that `group_id` into that groups symmetric keys (`group_key`) which we then 
 The `group_id` is defined as:
 
 ```
-var info = ["group_id", init_msg_id]
+var info = ["ssb-derive-cloaked-msg-id", init_msg_id]
 var group_id = HKDF.Expand(group_key, encode(info), 32)
 ```
 
@@ -26,7 +26,7 @@ where:
 ## Using `group_id`
 
 Because what this id is referencing is obfuscated, it's safe to use in public 
-(e.g. refernce or link to it from a public post)
+(e.g. refernece or link to it from a public post)
 
 We also use this in the `content.recps` field of classic messages.
 

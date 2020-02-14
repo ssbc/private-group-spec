@@ -13,8 +13,8 @@ var msg = {
     sequence: 29048,
     timestamp: 1581539387846,
     hash: "sha256",
-    content: "d01U1depQBn2fZwSX...xsYWsXlILxAvyHfHIH7aqwEXgie1d7nxEcSAajGGGz9K/CoAhdjz2DzfgonOfzArB/1q/Bg==.box2",
-    signature: "kPwB4e06oj+lIbIFm50lx/zUogS9P2phBtJZRqFy1ZlpI1MbJktTKvO4rN2yjiMhuKH5iFMS8wOQCBV3SvmlAw==.sig.ed25519"
+    content: "d01U1de...cSAajGGGz9K/CoAhdjz2DzfgonOfzArB/1q/Bg==.box2",
+    signature: "kPwB4e0...6oj+yjiMhuKH5iFMS8wOQCBV3SvmlAw==.sig.ed25519"
   }
 }
 ```
@@ -22,8 +22,8 @@ var msg = {
 Note the `msg.value.content` is of form `<base64>.box2`
 
 See the [box2-spec](https://github.com/ssbc/box2-spec) for how to derive this ciphertext, noting:
-- `feed_id` is derived from `msg.value.author`
-- `prev_msg_id` is derived from `msg.value.previous`
+- `feed_id` is a binary encoding of `msg.value.author` (see `box2-spec/encoding/tfk.md`)
+- `prev_msg_id` is a binary encoding of `msg.value.previous` (see `box2-spec/encoding/tfk.md`)
   - if `previous` is `null`, encode the key part of `prev_msg_id` as a zero-filled buffer of the same length you'd normally have (for that type/format combo)
 - the box2-spec returns the ciphertext as a Buffer, while in this layers we:
   - encode that as a base64 encoded string
@@ -45,7 +45,7 @@ var content = {
 After boxing this becomes:
 
 ```js
-var ciphertext = "d01U1depQBn2fZwSX...xsYWsXlILxAvyHfHIH7aqwEXgie1d7nxEcSAajGGGz9K/CoAhdjz2DzfgonOfzArB/1q/Bg==.box2"
+var ciphertext = "d01U1depQ...CoAhdjz2DzfgonOfzArB/1q/Bg==.box2"
 ```
 
 Reminder: boxing takes into account further context than just the content (`feed_id` + `prev_msg_id`)

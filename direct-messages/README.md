@@ -14,7 +14,7 @@ because the same message can simultaneously:
 
 We define a shared key that the sender + recipient can both derive:
 
-```
+```js
 function computeDirectMessageKey (my_secret, your_public) {
   var hash = 'SHA256'
   var salt = SHA256("box2-direct-messsage-shared-key-extract-salt")
@@ -26,7 +26,7 @@ function computeDirectMessageKey (my_secret, your_public) {
 
 Notes:
 - we (curently) use the primary feed keys for this derivation
-- for `ed25519` curve keypairs, we convert these to `curve25519` keypairs 
+- for feeds based on `ed25519` keypairs, we convert these to `curve25519` keypairs before doing scalarmult
 
 
 ## Using `feed_id`
@@ -53,7 +53,7 @@ var content = {
 ## Future
 
 In the future we might publish direct-message keys to our feeds directly.
-This would allow things like key-cycling, and is more proveable secure
+This would allow things like key-cycling, and is more proveably secure
 (than converting our primary feed keys)
 
 Notes for that possible future:
