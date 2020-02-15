@@ -2,7 +2,7 @@
 
 We want to be able to mention a group without revealing info about it.
 We'll also use this `group_id` in the `recps` field, and when we go to publish a message,
-map that `group_id` into that groups symmetric keys (`group_key`) which we then use for box2 encryption
+map that `group_id` into that groups symmetric key (`group_key`) which we then use for box2 encryption
 
 **Properties we want**
 - leaks nothing about the group _e.g. who started it, where it started_
