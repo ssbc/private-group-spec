@@ -39,7 +39,7 @@ Notes:
 - all messages in the group are part of that groups tangle (see `tangles.group`)
   - this makes it possible to query things based on group (e.g. was this in my europe or pacifica group?)
   - provides partial ordering for all activity in the group
-- all `entrust` type messages are part of the membership tangle (see `tangles.membership`)
+- all `entrust` type messages are part of the membership tangle (see `tangles.members`)
   - this makes it easy to build a history of additions to the group
 - the `tangles.group.root` and `tangles.members.root` are the same
   - this isn't true of all tangles
