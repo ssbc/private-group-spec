@@ -24,7 +24,7 @@ var content = {
     members: {
       root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
       previous: [
-        '%lm6Sqk3fFJA2EQFiyJ1MS/BZ9E=.sha256',
+        '%lm6Sqk3fFJA2EQFiyJ1MSASDASDASDASDASDAS/BZ9E=.sha256',
         '%Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS/BZ9E=.sha256'
       ]
     }
