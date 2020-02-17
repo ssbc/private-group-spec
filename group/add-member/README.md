@@ -7,7 +7,7 @@ var content = {
   type: 'group/add-member',
   version: 'v1',
   groupKey: '3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=',
-  initialMsg: '%96fE4lECuncfo8cMQHBWU0WpAx+cIq7A8NHFSzbxLTM=.sha256',
+  initialMsg: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
   text: 'welcome keks!',                                      // optional
   recps: [
     '%vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=.cloaked',  // group_id
@@ -33,6 +33,9 @@ var content = {
 ```
 
 Notes:
+- `initialMsg` is the same as `tangles.group.root`
+  - the redundancy is here to make it more obvious which root you should be using the compute `group_id`
+  - in the future our tangles may be _cloaked_ which means this key would become more important
 - `recps` must include the `group_id` and a `feed_id` (one or more)
   - this ensures that everyone has the same info about who's been added
   - if including multiple, keep in mind `max_attempts` of your application
