@@ -1,0 +1,32 @@
+{
+  "type": "unbox",
+  "description": "unbox this message!",
+  "input": {
+    "msg": {
+      "key": "%RUnCb13zyXgDUeKSDUhCAbZm95X5pX3kw0vjdroQ5Pw=.sha256",
+      "value": {
+        "previous": null,
+        "sequence": 1,
+        "author": "@+mjDLFxNsR34HggBLgCq0u2cKEHK0rvBEBfspevXY2U=.ed25519",
+        "timestamp": 1582624726597,
+        "hash": "sha256",
+        "content": "LxHTjhm7t6UdPkIa4aoVLM5bc58/GSZ4U3TysUmYtZLWh/OD2IkD5vVu0T70HS5LNIvMYBZ2qG33cfssZL3G6KqPntZunmJysFdW92MWdemvNOSfUvvC1+DSYhpkVApCogMwfB7ul4x0Jx4kaRyXROutml1DeWhb5pIs/pP0NQ+IlNc3EcNqXdYqDFUE+3w6WfhkBwjrtMLTc7qrXRRJFpb/z5PgnOJ7fMT9VRJ7D8NgeXyAPGf70VxO3o5Jz6U6ig==.box2",
+        "signature": "BuzBcXFuyd/0jjJ9QJkKseeuXpvwdTi8ZxbYCKDAozyshxeEgpeguo1e9p5zyI42jg5mCw2DlngcdidlHik7Aw==.sig.ed25519"
+      },
+      "timestamp": 1582624726600
+    },
+    "trial_keys": [
+      "CCfdadvAWhPuuvTwaH5jbtkJwGvsncdwK0WC+Jga5OM=",
+      "rSXCAKn29lfVzhFXBCY8x+uhLzDl/hd45gNRzmGr/10="
+    ]
+  },
+  "output": {
+    "content": {
+      "type": "alert",
+      "text": "get ready to scuttle!",
+      "recps": [
+        "%yQX4qHCayF7zq5E27IyAKE1SJfNIW8VREpjT5Axpm9Y=.cloaked"
+      ]
+    }
+  }
+}

@@ -13,7 +13,7 @@ var msg = {
     sequence: 29048,
     timestamp: 1581539387846,
     hash: "sha256",
-    content: "d01U1de...cSAajGGGz9K/CoAhdjz2DzfgonOfzArB/1q/Bg==.box2",
+    content: "d01U1de...cSAajGGGz9K/CoAhdjz2DzfgonOfzArB/1q/Bg==.box2", // <<<
     signature: "kPwB4e0...6oj+yjiMhuKH5iFMS8wOQCBV3SvmlAw==.sig.ed25519"
   }
 }
@@ -54,6 +54,6 @@ Reminder: boxing takes into account further context than just the content (`feed
 
 Scenarios:
 
-- unboxing a message from a person you're in some groups with
-- unboxing a direct message
-- creating a boxed content to a group + individual
+- vector1: unboxing a message from a person you're in some groups with
+- vector2: unboxing a direct message
+- vector3: creating a boxed content to a group + individual
