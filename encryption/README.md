@@ -1,4 +1,4 @@
-# box2 encryption
+# envelope encryption
 
 ## Example
 
@@ -21,11 +21,11 @@ var msg = {
 
 Note the `msg.value.content` is of form `<base64>.box2`
 
-See the [box2-spec](https://github.com/ssbc/box2-spec) for how to derive this ciphertext, noting:
-- `feed_id` is a binary encoding of `msg.value.author` (see `box2-spec/encoding/tfk.md`)
-- `prev_msg_id` is a binary encoding of `msg.value.previous` (see `box2-spec/encoding/tfk.md`)
+See the [envelope-spec](https://github.com/ssbc/envelope-spec) for how to derive this ciphertext, noting:
+- `feed_id` is a binary encoding of `msg.value.author` (see `envelope-spec/encoding/tfk.md`)
+- `prev_msg_id` is a binary encoding of `msg.value.previous` (see `envelope-spec/encoding/tfk.md`)
   - if `previous` is `null`, encode the key part of `prev_msg_id` as a zero-filled buffer of the same length you'd normally have (for that type/format combo)
-- the box2-spec returns the ciphertext as a Buffer, while in this layers we:
+- the envelope-spec returns the ciphertext as a Buffer, while in this layers we:
   - encode that as a base64 encoded string
   - suffix it with `.box2` as a clear signal for unboxers
   

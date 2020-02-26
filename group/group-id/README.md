@@ -2,7 +2,7 @@
 
 We want to be able to mention a group without revealing info about it.
 We'll also use this `group_id` in the `recps` field, and when we go to publish a message,
-map that `group_id` into that groups symmetric key (`group_key`) which we then use for box2 encryption
+map that `group_id` into that groups symmetric key (`group_key`) which we then use for envelope encryption
 
 **Properties we want**
 - leaks nothing about the group _e.g. who started it, where it started_
@@ -18,9 +18,9 @@ var group_id = HKDF.Expand(group_key, encode(info), 32)
 ```
 
 where:
-- `init_msg_id` is the id of the message which initialised the group, in a binary type-format-key encoding (see `box2-spec/encoding/tfk.md`)
+- `init_msg_id` is the id of the message which initialised the group, in a binary type-format-key encoding (see `envelope-spec/encoding/tfk.md`)
 - `group_key` is the groups secret (symmetric) key
-- `encode` is shallow-length-prefix encode (see `box2-spec/encoding/slp.md`)
+- `encode` is shallow-length-prefix encode (see `envelope-spec/encoding/slp.md`)
 
 
 ## Using `group_id`
@@ -56,7 +56,7 @@ When you're entrusted with access to a private group, you will receive:
 
 This will allow you to derive the `group_id` for that group (using definition above).
 You will need to keep an index which will allow you map `group_id` to `group_key` so that when you see
-a `recps` field containing the cloaked `group_id` you'll know which shared key to include in box2 `recp_keys`
+a `recps` field containing the cloaked `group_id` you'll know which shared key to include in envelope `recp_keys`
 
 
 ## Design Considerations

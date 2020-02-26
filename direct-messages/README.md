@@ -1,10 +1,10 @@
 # Direct messages
 
-box2 can be used in the same way as box1 to send a message to n individuals.
+envelope can be used in the same way as box1 to send a message to n individuals.
 (n will be defined by a common `max_attempts` - as in the maximum assumed number of 
 `key_slots` for your application)
 
-box2 also allows us to send messages to group and also to individuals at the same time.
+envelope also allows us to send messages to group and also to individuals at the same time.
 This is particularly desireable in the case where we want to add a new person to a group
 because the same message can simultaneously:
 - give the new person the info needed to access the group
@@ -17,7 +17,7 @@ We define a shared key that the sender + recipient can both derive:
 ```js
 function computeDirectMessageKey (my_secret, your_public) {
   var hash = 'SHA256'
-  var salt = SHA256("box2-direct-messsage-shared-key-extract-salt")
+  var salt = SHA256("envelope-direct-messsage-shared-key-extract-salt")
   var input_keying_material = scalarmult(my_secret, your_public)
 
   return hkdf.Extract(hash, salt, input_keying_material)
@@ -34,7 +34,7 @@ Notes:
 It's safe to use `feed_id` anywhere in public (as these are already public).
 
 In the context of `content.recps` we use `feed_id` so that other recipients can see who
-was included in the message, but for the box2 `recp_key` we map the `feed_id` to a `shared_dm_key`
+was included in the message, but for the envelope `recp_key` we map the `feed_id` to a `shared_dm_key`
 using the above definition
 
 ```js

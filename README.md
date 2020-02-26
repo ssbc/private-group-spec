@@ -4,15 +4,15 @@ A specification for implementing private groups in scuttlebutt.
 
 The fundamentals of this spec are:
 
-1. uses box2 for encryption of content
+1. uses _envelope_ for encryption of content
 2. has group_ids which are safe to share publicly
 3. adding people to the group is done with group's knowledge
 4. supports disclosing of message content
     - **but this leaks info about the group** (peak at other messages / authors)
 
-## box2 encryption in scuttlebutt
+## envelope encryption in scuttlebutt
 
-In adition to the box2-spec, there are some scuttlebutt-specific specifications
+In adition to the envelope-spec, there are some scuttlebutt-specific specifications
 
 [See spec here](./encryption/README.md)
 
@@ -21,11 +21,15 @@ In adition to the box2-spec, there are some scuttlebutt-specific specifications
 
 box1 took feedIds from the `content.recps` field and directly used these for encryption.
 
-In box2, we take these keys and **derive** a recipient key which is then passed into box2 `recp_keys`.
+In envelope, we take these ids, and map each to `{ key, key_type }` where":
+- `key` is the shared key which we're going to a `key_slot`, and 
+- `key_type` is the "key management schema" which that key is employing
 
-How keys are mapped:
-- [cloaked `group_id`s](./group/group-id/README.md)
-- [`feed_id`s](./direct-messages/README.md)
+Type of id            | How `key` is found                                 | `key_type`
+----------------------|----------------------------------------------------|-----------------------------------------
+cloaked groupId       | [a key-store](./group/group-id/README.md)          | "envelope-large-symmetric-group"
+classic feedId        | [diff-hellman styles](./direct-messages/README.md) | "envelope-id-based-dm-converted-ed25519"
+published private key | TODO                                               | "envelope-signed-dh-key-curve25519"
 
 
 ## group management

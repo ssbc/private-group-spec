@@ -62,7 +62,7 @@ var plainText = {
 
 var plain_text = .... stringify + buffer
 
-var ciphertext = box2(plain_text, feed_id, prev_msg_id, msg_key, [ group_key ])
+var ciphertext = envelope(plain_text, feed_id, prev_msg_id, msg_key, [ group_key ])
 
 ciphertext ---> string + .box2
 ```

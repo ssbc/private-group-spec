@@ -1,7 +1,7 @@
 {
   "name": "private-group-spec",
   "version": "0.0.1",
-  "description": "a spec for private groups in scuttlebutt, using box2 encryption",
+  "description": "a spec for private groups in scuttlebutt, using envelope encryption",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
