@@ -21,15 +21,17 @@ In adition to the envelope-spec, there are some scuttlebutt-specific specificati
 
 box1 took feedIds from the `content.recps` field and directly used these for encryption.
 
-In envelope, we take these ids, and map each to `{ key, key_type }` where":
+In envelope, we instead take "ids" from `content.recps`, and map each to a pair`{ key, key_type }` where":
 - `key` is the shared key which we're going to a `key_slot`, and 
 - `key_type` is the "key management schema" which that key is employing
 
-Type of id            | How `key` is found                                 | `key_type`
+Type of id            | How `key` is found                                 | `scheme`
 ----------------------|----------------------------------------------------|-----------------------------------------
-cloaked groupId       | [a key-store](./group/group-id/README.md)          | "envelope-large-symmetric-group"
+private group id      | [a key-store](./group/group-id/README.md)          | "envelope-large-symmetric-group"
 classic feedId        | [diff-hellman styles](./direct-messages/README.md) | "envelope-id-based-dm-converted-ed25519"
-published private key | TODO                                               | "envelope-signed-dh-key-curve25519"
+published private key | TODO                                               | "envelope-signed-dh-key-curve25519" ??
+
+see `key-schemes.json` for the canonical list of accepted
 
 
 ## group management

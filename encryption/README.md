@@ -55,5 +55,6 @@ Reminder: boxing takes into account further context than just the content (`feed
 Scenarios:
 
 - vector1: unboxing a message from a person you're in some groups with
-- vector2: unboxing a direct message
-- vector3: creating a boxed content to a group + individual
+- vector2: unboxing a message from a person you're in some groups with (previous: null)
+- vector3: unboxing a direct message
+- vector4: creating a boxed content to a group + individual
