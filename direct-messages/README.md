@@ -64,8 +64,13 @@ Possible direct message public key update message draft:
   "type": "dm-key",
   "key": "<base64>",
   "keyType": "curve25519", // or cv25519?
+  "proof-of-possession": "TBD"
 }
 ```
+
+The proof of possession is required to prevent [Unknown Key Share attacks]. [This RFC](https://tools.ietf.org/html/rfc6955) describes how we _could_ do it.
+
+[Unknown Key Share attacks]: https://en.wikipedia.org/wiki/Unknown_key-share_attack
 
 Questions:
 - should this be part of a tangle, to clearly indicate succession of keys?
