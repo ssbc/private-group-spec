@@ -10,18 +10,14 @@ map that `group_id` into that groups symmetric key (`group_key`) which we then u
 
 ## Definition
 
-The `group_id` is defined as:
+The `group_id` is defined as the cloaked message id (see `envelope-spec/cloaked_id/README.md`)
+for the `group/init` message which started the group.
+
+## Example
 
 ```
-var info = ["ssb-derive-cloaked-msg-id", init_msg_id]
-var group_id = HKDF.Expand(group_key, encode(info), 32)
+%g/JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=.cloaked
 ```
-
-where:
-- `init_msg_id` is the id of the message which initialised the group, in a binary type-format-key encoding (see `envelope-spec/encoding/tfk.md`)
-- `group_key` is the groups secret (symmetric) key
-- `encode` is shallow-length-prefix encode (see `envelope-spec/encoding/slp.md`)
-
 
 ## Using `group_id`
 
@@ -62,11 +58,13 @@ a `recps` field containing the cloaked `group_id` you'll know which shared key t
 ## Design Considerations
 
 1. the parts you could identify a group uniquely by are: 
-    - it's `group_key` : this is only know by people who are "in the group". This makes it a good candidate for contributing to the identifier, but we can't use it raw, otherwise mentioning it publicly could accidentally leak access to the group.
-    - it's `init_msg_id` : message ids are public, so if there was a public mention of a group you could see if running some DeriveGroupId on all message ids you have to try and discover starts of groups. This alone is can't be used to derive `group_id`.
-2. this definition binds the id of the group to a particular `group_key`, which might make "key-cycling" weird
-    - maybe this is good, the ID probably should reflect the current key in use
-    - it would make uniquely referencing a group which had change it's key (and hence `group_id`) harder... you'd have to store a range of aliases for a group
-    - we don't know if we'd do cycling of keys anyway...
+    - it's initialisation message
+      - the public id of this message is knowable by all
+      - the `msg_key` for this message is only know to people in the group
+      - the `read_key` is known to anyone who can read the message (in group or been given permission)
+    - it's private `group_key` for decrypting all messages
+2. the above defintion uses the more general "cloaked message id" spec, and has the advantages:
+    - it is not derived from the `group_key`, so this could later be cycled (potentially)
+    - anyone who can read the init message can reference the group, without being able to read the whole group history (you only need the read capability for the group init messsage)
 3. this means the `group_id` is bound to the feed
     - it can't be set / determined until a group initialisation message is published
