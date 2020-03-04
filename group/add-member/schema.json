@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "required": [
+    "type",
+    "version",
+    "groupKey",
+    "initialMsg",
+    "tangles"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "pattern": "^group/add-member$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v1$"
+    },
+    "groupKey": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "initialMsg": {
+      "$ref": "#/definitions/messageId"
+    },
+    "text": {
+      "type": "string"
+    },
+    "recps": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/feedId"
+          },
+          {
+            "$ref": "#/definitions/cloakedMessageId"
+          }
+        ]
+      }
+    },
+    "tangles": {
+      "type": "object",
+      "required": [
+        "group",
+        "members"
+      ],
+      "properties": {
+        "group": {
+          "$ref": "#/definitions/tangleUpdate"
+        },
+        "members": {
+          "$ref": "#/definitions/tangleUpdate"
+        }
+      }
+    },
+    "definitions": {
+      "messageId": {
+        "type": "string",
+        "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.sha256$"
+      },
+      "feedId": {
+        "type": "string",
+        "pattern": "^@[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.(?:sha256|ed25519)$"
+      },
+      "cloakedMessageId": {
+        "type": "string",
+        "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=\\.cloaked$"
+      },
+      "tangleUpdate": {
+        "type": "object",
+        "required": [
+          "root",
+          "previous"
+        ],
+        "properties": {
+          "root": {
+            "$ref": "#/definitions/messageId"
+          },
+          "previous": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/messageId"
+            }
+          }
+        }
+      }
+    }
+  }
+}

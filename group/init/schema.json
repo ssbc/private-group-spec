@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "required": [
+    "type",
+    "tangles"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "pattern": "^group/init$"
+    },
+    "name": {
+      "type": "object",
+      "required": [
+        "set"
+      ],
+      "properties": {
+        "set": {
+          "type": "string"
+        }
+      }
+    },
+    "tangles": {
+      "type": "object",
+      "required": [
+        "group"
+      ],
+      "properties": {
+        "group": {
+          "type": "object",
+          "required": [
+            "root",
+            "previous"
+          ],
+          "properties": {
+            "root": {
+              "type": "null"
+            },
+            "previous": {
+              "type": "null"
+            }
+          }
+        }
+      }
+    }
+  }
+}
