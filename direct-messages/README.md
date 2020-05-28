@@ -15,18 +15,21 @@ because the same message can simultaneously:
 We define a shared key that the sender + recipient can both derive:
 
 ```js
+
 function computeDirectMessageKey (my_secret, your_public) {
   var hash = 'SHA256'
-  var salt = SHA256("envelope-direct-messsage-shared-key-extract-salt")
   var input_keying_material = scalarmult(my_secret, your_public)
+  var salt = "envelope-id-based-dm-converted-ed25519"
+  // see 'private-group-spec/direct-messages/constants.json'
 
-  return hkdf.Extract(hash, salt, input_keying_material)
+  return hkdf.Extract(hash, input_keying_material, salt)
 }
 ```
 
 Notes:
 - we (curently) use the primary feed keys for this derivation
 - for feeds based on `ed25519` keypairs, we convert these to `curve25519` keypairs before doing scalarmult
+- note this uses `hkdf.Extract` (while other parts of this stack use `hkdf.Expand`)
 
 
 ## Using `feed_id`
