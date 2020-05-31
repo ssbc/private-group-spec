@@ -17,7 +17,7 @@ We define a shared key that the sender + recipient can both derive:
 ```js
 function computeDirectMessageKey (my_dh_secret, my_dh_public, your_dh_public, my_feed_tfk, your_feed_tfk) {
   var hash = 'SHA256'
-  var length = 32     // 32 bytes = 256 bits
+  var length = 32
   var salt = SHA256("envelope-dm-v1-extract-salt")
   var info = slp_encode(
       ["envelope-ssb-dm-v1/key"]
@@ -37,6 +37,11 @@ The function arguments are:
 - `your_dh_public`: the Diffie-Hellman public key of the communication partner.
 - `my_feed_tfk`: the own Scuttlebutt feed ID in tfk format, as specified in TODO.
 - `your_feed_tfk`: the Scuttlebutt feed ID in tfk format of the communication partner.
+
+The constants we use are:
+- `hash` is set to `SHA256`, such that HKDF uses SHA256 as underlying hash function.
+- `length` is set to 32, such that the output keys are 32 bytes = 256 bits long.
+- `salt` is set to `SHA256("envelope-dm-v1-extract-salt")`.
 
 Furthermore, we require the following helper functions:
 - `SHA256`: The SHA256 hash function
@@ -58,7 +63,7 @@ That context is composed of several values.
 Firstly, it contains a purpose identifying this particular key derivation.
 
 Secondly, it contains the two Diffie-Hellman public keys whose shared secret is calculated, concatenated with the respective feed ID.
-  We include the Diffie-Hellman public keys, because it is possible for two pairs `(skA, pkB), (skC, pkD)` to result in the same shared key `skA*pkB=skC*pkD`.
+  We include the Diffie-Hellman public keys, because it is possible for two pairs `(skA, pkB), (skC, pkD)` to have scalar multiplication result in the same shared key `skA*pkB=skC*pkD`.
   By deriving based on the two public keys, we disambiguate which of the possible keys were used and return a different output key, respectively.
   Note that this can only happen if the attacker has access to the secret keys, but even under these circumstances we want to avoid the confusion that can arise from this.
   The feed IDs are included to avoid any confusion that could arise by an attacker reposting someone elses public keys.
