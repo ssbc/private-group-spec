@@ -10,7 +10,7 @@ because the same message can simultaneously:
 - give the new person the info needed to access the group
 - reveal to the group that this action happened
 
-## Mapping `feed_id` to a `recp_key`
+## Computing the `recp_key`
 
 We define a shared key that the sender + recipient can both derive:
 
