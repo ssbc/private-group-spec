@@ -54,8 +54,6 @@ Furthermore, we require the following helper functions:
 As a high level overview, we first compute the shared key between our secret key and the other public key.
 Then, we derive a secret from it using HKDF.
 The key derivation function takes four inputs: the input keying material, the key length, a salt and some additional info that ties the output key to the context.
-We use the shared key as the input keying material and a key length of 256 bit.
-The salt is specified to be the SHA256 hash of the string `"envelope-dm-v1-extract-salt"`.
 A different info value will make the key derivation return a different value, even if the same input key is used.
 This means the `info` variable can be used to tie the output key to the specific context of this call. 
 That context is composed of several values.
