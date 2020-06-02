@@ -2,15 +2,13 @@
   "type": "direct_message_shared_key",
   "description": "calculate a shared DM key for another feedID",
   "input": {
-    "my_keys": {
-      "curve": "ed25519",
-      "public": "PgtHJT1L29Gh6wmS4Q9UDeUJZ6ZSkTFgryoHy02gKpc=.ed25519",
-      "private": "GSxyffiCY9IIgPNr+zA5ce5Se8x47Rc5jLZEAnJFhOA+C0clPUvb0aHrCZLhD1QN5QlnplKRMWCvKgfLTaAqlw==.ed25519",
-      "id": "@PgtHJT1L29Gh6wmS4Q9UDeUJZ6ZSkTFgryoHy02gKpc=.ed25519"
-    },
-    "feed_id": "@JnyVm12Cj247NCvFZgGy1v2HfISN3UvA5mJ2mXFzVwg=.ed25519"
+    "my_dh_secret": "oHz0nhFr8jeMDGboBB0McRsdTJJwSpfbOLcZHEsyeWc=",
+    "my_dh_public": "yC0PdAXkQ7Rn7ZiWvxLYh4o87JVEUElYse/4Cb4vxA4=",
+    "my_feed_tfk": "AAB0XWAxwFnBlTaIUuKVwtXLAsC8Hhh2ZhKPn44+eLuogA==",
+    "your_dh_public": "8419fvlDL7TJ/HA/T30q3rR/29kol/Q3HRWiYiSSVBA=",
+    "your_feed_tfk": "AADmNimSs3wcQ6L8+dwRB9mi3icNRRSWW3nQWS33Oki2OQ=="
   },
   "output": {
-    "shared_key": "xjsK+Lbt8WhB3aDre42Sb/fGwylHyTL5rBFP6qCKMtk="
+    "shared_key": "D9uHQqHLiPRTzV+TLa4dRUDZtfvUCwzVTGiOnzJCaXI="
   }
 }
