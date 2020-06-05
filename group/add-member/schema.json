@@ -5,7 +5,7 @@
     "type",
     "version",
     "groupKey",
-    "initialMsg",
+    "root",
     "tangles"
   ],
   "properties": {
@@ -21,7 +21,7 @@
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
-    "initialMsg": {
+    "root": {
       "$ref": "#/definitions/messageId"
     },
     "text": {
