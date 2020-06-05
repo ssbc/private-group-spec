@@ -9,17 +9,6 @@
       "type": "string",
       "pattern": "^group/init$"
     },
-    "name": {
-      "type": "object",
-      "required": [
-        "set"
-      ],
-      "properties": {
-        "set": {
-          "type": "string"
-        }
-      }
-    },
     "tangles": {
       "type": "object",
       "required": [
@@ -43,5 +32,6 @@
         }
       }
     }
-  }
+  },
+  "additionalProperties": false
 }

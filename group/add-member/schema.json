@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "required": [
     "type",
@@ -29,16 +30,19 @@
     "recps": {
       "type": "array",
       "minItems": 2,
+      "maxItems": 16,
       "items": {
         "anyOf": [
           {
             "$ref": "#/definitions/feedId"
           },
           {
-            "$ref": "#/definitions/cloakedMessageId"
+            "type": "string",
+            "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=\\.cloaked$"
           }
         ]
-      }
+      },
+      "additionalProperties": false
     },
     "tangles": {
       "type": "object",
@@ -48,10 +52,10 @@
       ],
       "properties": {
         "group": {
-          "$ref": "#/definitions/tangleUpdate"
+          "$ref": "#/definitions/tangle/update"
         },
         "members": {
-          "$ref": "#/definitions/tangleUpdate"
+          "$ref": "#/definitions/tangle/any"
         }
       }
     },
@@ -64,28 +68,53 @@
         "type": "string",
         "pattern": "^@[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.(?:sha256|ed25519)$"
       },
-      "cloakedMessageId": {
-        "type": "string",
-        "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=\\.cloaked$"
-      },
-      "tangleUpdate": {
-        "type": "object",
-        "required": [
-          "root",
-          "previous"
-        ],
-        "properties": {
-          "root": {
-            "$ref": "#/definitions/messageId"
-          },
-          "previous": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/messageId"
+      "tangle": {
+        "root": {
+          "type": "object",
+          "required": [
+            "root",
+            "previous"
+          ],
+          "properties": {
+            "root": {
+              "type": "null"
+            },
+            "previous": {
+              "type": "null"
             }
           }
+        },
+        "update": {
+          "type": "object",
+          "required": [
+            "root",
+            "previous"
+          ],
+          "properties": {
+            "root": {
+              "$ref": "#/definitions/messageId"
+            },
+            "previous": {
+              "type": "array",
+              "item": {
+                "$ref": "#/definitions/messageId"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "any": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/tangle/root"
+            },
+            {
+              "$ref": "#/definitions/tangle/update"
+            }
+          ]
         }
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
