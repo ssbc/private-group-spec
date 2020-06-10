@@ -10,7 +10,6 @@ Here's how you initialise a group in the current JS stack
 // content you encode
 var plainText = {
   type: 'group/init'
-  name: { set: 'pacific butts consortium' },  // optional
   tangles: {
     group: {
       root: null,
@@ -19,7 +18,7 @@ var plainText = {
   }
 }
 
-// what you publish (boxed plaintext)
+// what you publish (enveloped plaintext)
 var ciphertext = "SDSDsadlksajda432wdfsdlkfja=.box2"
 ```
 
@@ -51,7 +50,6 @@ vat msg_key = ... make up a one use key for the msg
 // here's the unencrypted init message
 var plainText = {
   type: 'group/init'
-  name: { set: 'pacific butts consortium' },  // optional
   tangles: {
     group: {
       root: null,

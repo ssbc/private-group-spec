@@ -15,18 +15,32 @@ because the same message can simultaneously:
 We define a shared key that the sender + recipient can both derive:
 
 ```js
-function computeDirectMessageKey (my_secret, your_public) {
-  var hash = 'SHA256'
-  var salt = SHA256("envelope-direct-messsage-shared-key-extract-salt")
-  var input_keying_material = scalarmult(my_secret, your_public)
+const hash = 'SHA256'
+const length = 32
+const salt = SHA256('envelope-dm-v1-extract-salt')
 
-  return hkdf.Extract(hash, salt, input_keying_material)
+function directMessageKey (my_dh_secret, my_dh_public, my_feed_tfk, your_dh_public, your_feed_tfk) {
+  var  input_keying_material = scalarmult(my_dh_secret, your_dh_public)
+
+  var info_context = Buffer.from('envelope-ssb-dm-v1/key', 'utf8')
+  var info_keys = sort([
+    my_dh_public || my_feed_tfk,
+    your_dh_public || your_feed_tfk
+  ])
+  var info = slp.encode([info_context, ...info_keys])
+
+  return hkdf(input_keying_material, length, { salt, info, hash })
 }
 ```
 
 Notes:
-- we (curently) use the primary feed keys for this derivation
-- for feeds based on `ed25519` keypairs, we convert these to `curve25519` keypairs before doing scalarmult
+- `(dh_secret, dh_public)` is some Diffie-Hellman compatible keypair to be used for encryption 
+    - currently we take feed keys (`ed25519` signing keys) and convert these to keys compatible with diffie-hellman (dh) shared key encryption (`curve25119` keys)
+    - in the future we plan to generate dh encryption keys seperately
+- `feed_tfk` is the "id" of a feed, namely the public part of that feed's signing keypair, encoded in "type-format-key" format (see [TFK][TFK])
+- `||` means Buffer concat
+- `sort` means sort these 2 buffers bytewise so that the smallest is first
+- `slp.encode` is "shallow length-prefixed encode" (see [SLP][SLP])
 
 
 ## Using `feed_id`
@@ -73,3 +87,6 @@ Questions:
 - if we allow multiple of these keys, does that mean we have to try all keys from a person history?
 - do we make a policy for "forgeting" past keys (e.g. n days after new one received)?
 
+
+[SLP]: https://github.com/ssbc/envelope-spec/blob/master/encoding/slp.md
+[TFK]: https://github.com/ssbc/envelope-spec/blob/master/encoding/tfk.md
