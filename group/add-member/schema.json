@@ -37,8 +37,7 @@
             "$ref": "#/definitions/feedId"
           },
           {
-            "type": "string",
-            "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=\\.cloaked$"
+            "$ref": "#/definitions/cloakedMsgId"
           }
         ]
       },
@@ -63,6 +62,10 @@
       "messageId": {
         "type": "string",
         "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.sha256$"
+      },
+      "cloakedMessageId": {
+        "type": "string",
+        "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.cloaked$"
       },
       "feedId": {
         "type": "string",
