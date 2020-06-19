@@ -2,22 +2,22 @@
   "type": "group_id",
   "description": "determine the group_id (remember group_id is derived from read_key of init msg)",
   "input": {
-    "group_key": "l9Ir+OgqPXBqmx+sn4bJou0wVM6g3vY7yadlVGDPMfE=",
+    "group_key": "TEZX9k0Rb+RDmcJ3qsn6ezNJuXogKsg30wM+7eQeKg0=",
     "group_init_msg": {
-      "key": "%H9M4kvM7RB1edUNRSME63uTs9a1rvx3D6S2tZXYQpok=.sha256",
+      "key": "%tvqtJASIMYGGboo/MWTPElsSx0iARbFiEnlledQC8EY=.sha256",
       "value": {
-        "previous": "%43aVczE5rQ6J6jAwsT/RoaGR+1ZA/aZENGH5OK4/5EY=.sha256",
+        "previous": "%iK1LJXnjY9aIWGkdgzsEYMPmYMkRqR1PT0ExFZSHzqY=.sha256",
         "sequence": 2,
-        "author": "@NgjdGBIClGSiwMugG/P1SSCZI7qEEWxAsy38BGuGF80=.ed25519",
-        "timestamp": 1592533020879,
+        "author": "@T9bytuo/+Kq8JcVhWmb5Fe4ErijGOt6WKBAoCKPcaO4=.ed25519",
+        "timestamp": 1592534932584,
         "hash": "sha256",
-        "content": "i6BX8AlcnmZi22vUhn0JxZCqOvS4b1D4Urxf2k4Yndi67j9ixMchhr9TrbpjBRyiOKvcqiBcq5ZVVMD98X/3T9g+7A6GD4cWkT03o4vosI4VW6wLh1CIokuyIyLewdFxBpApnFfaCU+tluHkhmiX6Uw48SGU2biiqSUBWVKsjZ0ARG74uomsBzs3zS9ftEH4ldTq+30/EA==.box2",
-        "signature": "XDMNhOicV+1pzORU8wBN6ktT6jn8PjurElTHbAEgrVb2+C560XctlE5xI47/T2SYOxjXUdoxMBHuK7PvtIV+Bw==.sig.ed25519"
+        "content": "7Zmi3ZtJa8rGmOMCMC6KuJ7sTlad7gog9YqDBAJVrZ0vPhxhoav8aCdIz71oGn4avEdOW6gTuLbPdn6Cv3aLymtFYqp+wiyScADsV4CmprVrW8I+XmslbrmDVBbPKR7UZ+xdP4WuW5JvWFUi2TTuAaUGwSMESQjbOpCXC/B8DP9Nhc+WcbotvKCVJOth9JgyPFfiPUbPzg==.box2",
+        "signature": "PRtXKVYqsf3a19ymZzUQXtQC+rUck9h/r1tH2BImaZnZ8mMKzc3qh8LTnrWPyeadcYMX2wVt4XtxIxkkhMciDA==.sig.ed25519"
       },
-      "timestamp": 1592533020880
+      "timestamp": 1592534932584.001
     }
   },
   "output": {
-    "group_id": "%CR7qdDLVr1abNE7ZxzNJPbuaMMFVa398mzrUPCO7/0M=.cloaked"
+    "group_id": "%6kFEq9AaVS/uhnKGARmPAIQdXcGkex8f1l//UFGZtSg=.cloaked"
   }
 }

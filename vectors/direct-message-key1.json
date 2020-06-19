@@ -2,13 +2,13 @@
   "type": "direct_message_shared_key",
   "description": "calculate a shared DM key for another feedID. Note all inputs here are TFK encoded!",
   "input": {
-    "my_dh_secret": "AwCYUX45TyzMINj9mWyv/bZZqJ7KIIiB8VWc4m9Dyugqcw==",
-    "my_dh_public": "AwBrvX7hcWj+9HqQeZl0q+1O2StPVqvC1nz10eFwDvkZdw==",
-    "my_feed_id": "AADx3s2olg3gsJKDyzPcsKJCP09ark9UTjt+VuPLJPxZKg==",
-    "your_dh_public": "AwDdK8/CghFxYK/rP0JvKSgnlQFXBVJ6HYSYO4pHnxiFJw==",
-    "your_feed_id": "AADl/UwPnPSJXHgsDtEA0a+ShBCtcEF6FYHTFwm+VCW7mg=="
+    "my_dh_secret": "AwAAVBWosdJiUxa5F8b80q9zuDEKpOIZtPC8TUvAg7rKWA==",
+    "my_dh_public": "AwCgOagkeHCncXEVBdh1VJvD9MZHkwPx0zW8SF8V4b3BSw==",
+    "my_feed_id": "AAAUZ8SPimu5pvsd1V2gTnRAOFNaYYT57gUXsA+GxVXHMw==",
+    "your_dh_public": "AwANNqWZhzlZAfoeNJ2U/H525k8SP4zlvUU7a6SbkkxmZw==",
+    "your_feed_id": "AAA9ZhEGPhMmVd2y1YhnKh7r+RN4fI0pElnblvIgX7rQcg=="
   },
   "output": {
-    "shared_key": "GxtuzHWe9egLij381oZ5VGNHtkmLrBeo57SC+mrcfMc="
+    "shared_key": "DSf3Ac/sy5xLoulfxdpUwNlYPctJoCB7MiJksZsOn+U="
   }
 }
