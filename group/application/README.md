@@ -12,8 +12,9 @@ var content = {
   root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
   text: 'Accepted Ash son of Axuia ',                                      // optional
   recps: [
-    '%vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=.cloaked',  // group_id
-    '@YXkE3TikkY4GFMX3lzXUllRkNTbj5E+604AkaO1xbz8=.ed25519'   // feed_id (for new person)
+    '@Io9Yu78kY4GFMX3lzXUllRkNTbj5E+604AkaO1xJJz8=.ed25519', // kaitiaki feedId
+    '@P0kcetMokY4GFMX3lzXUllRkNTbj5E+604AkaO1888U=.ed25519', // kaitiaki 2 feedId
+    '@YXkE3TikkY4GFMX3lzXUllRkNTbj5E+604AkaO1xbz8=.ed25519'  // application sender feedId
   ],
 
   tangles: {
