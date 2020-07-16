@@ -12,8 +12,7 @@
     "tangles": {
       "type": "object",
       "required": [
-        "group",
-        "application"
+        "group"
       ],
       "properties": {
         "group": {
@@ -29,21 +28,6 @@
             "previous": {
               "type": "null"
             }
-          }
-        }
-      },
-      "application": {
-        "type": "object",
-        "required": [
-          "root",
-          "previous"
-        ],
-        "properties": {
-          "root": {
-            "type": "null"
-          },
-          "previous": {
-            "type": "null"
           }
         }
       }
