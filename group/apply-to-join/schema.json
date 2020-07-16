@@ -5,7 +5,6 @@
     "type",
     "version",
     "groupId",
-    "root",
     "tangles"
   ],
   "properties": {
@@ -19,7 +18,7 @@
     },
     "groupId": {
       "type": "string",
-      "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
+      "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.cloaked$"
     },
     "root": {
       "$ref": "#/definitions/messageId"
@@ -46,7 +45,6 @@
         "application"
       ],
       "properties": {
-        
         "application": {
           "$ref": "#/definitions/tangle/update"
         }
