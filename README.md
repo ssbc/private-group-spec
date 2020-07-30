@@ -28,8 +28,9 @@ In envelope, we instead take "ids" from `content.recps`, and map each to a pair 
 Type of id            | How `key` is found                                 | `scheme`
 ----------------------|----------------------------------------------------|-----------------------------------------
 private group id      | [a key-store](./group/group-id/README.md)          | "envelope-large-symmetric-group"
-classic feedId        | [diff-hellman styles](./direct-messages/README.md) | "envelope-id-based-dm-converted-ed25519"
-published private key | TODO                                               | ???
+another feedId        | [diff-hellman styles](./direct-messages/README.md) | "envelope-id-based-dm-converted-ed25519"
+your feedId           | [locally stored key](./direct-messages/README.md)  | "envelope-symmetric-key-for-self"
+published public key  | TODO                                               | ???
 
 see `key-schemes.json` for the canonical list of accepted schema labels
 
