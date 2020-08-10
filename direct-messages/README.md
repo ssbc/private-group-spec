@@ -12,7 +12,14 @@ because the same message can simultaneously:
 
 ## Mapping `feed_id` to a `recp_key`
 
-We define a shared key that the sender + recipient can both derive:
+There are two cases:
+1. Remote feed - the `feed_id` is for another feed
+2. Local feed - the `feed_id` is your own feed
+
+
+### 1. Mapping `feed_id` to a `recp_key` | Remote feed
+
+We define a shared key that the sender (us) + recipient can both derive:
 
 ```js
 const hash = 'SHA256'
@@ -41,6 +48,32 @@ Notes:
 - `||` means Buffer concat
 - `sort` means sort these 2 buffers bytewise so that the smallest is first
 - `slp.encode` is "shallow length-prefixed encode" (see [SLP][SLP])
+- the full key you try with a slot is of form `{ key, scheme: "envelope-id-based-dm-converted-ed25519" }`
+
+### 2. Mapping `feed_id` to a `recp_key` | Local feed
+
+A problem with sending a direct message to another feed is that once the message is enveloped, we don't have a record of
+who the remote recipients were, so guessing which shared-key to derive (1) is hard.
+
+A solution is to include out own `feed_id` as a recipient, and to always try a key we would have used on such messages.
+We could in theory apply the same scheme as in (1), but this would involve us doing a scalar multiplaction of the public and private parts
+of our key, which _should_ be safe, but we've decided not to do it.
+
+
+Instead, when you see your own `feed_id` as a recipient, you're expected to **map that to a private symmetric key**.
+Major advantages of this approach are:
+- replies to original messages can use the same recps - makes coding more consistent
+- this is compatible with multi-device identities - later I can send a copy of keys to other devices so they have access to the same DMs
+
+Use a key of 32 bytes
+
+Notes:
+- the full key you try with a slot is of form `{ key, scheme: "envelope-symmetric-key-for-self" }`
+- we considered using a "personal group", but this has the disadvantages:
+    - makes replies hard - remote feeds do not know how to map your personal `group_id` to a symmetric key, so...?
+    - includes un-cloaked tangle info about the group, which may leak private info (e.g. feeds / devices you don't want known)
+
+---
 
 
 ## Using `feed_id`
