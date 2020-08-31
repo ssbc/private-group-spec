@@ -1,4 +1,4 @@
-# Private-Groups Spec (v1)
+# Private-Groups Spec | v1.0.0
 
 A specification for implementing private groups in scuttlebutt.
 
