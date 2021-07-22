@@ -1,6 +1,7 @@
 module.exports = {
   constants: {
-    directMessages: require('./direct-messages/constants.json')
+    directMessages: require('./direct-messages/constants.json'),
+    poBox: require('./po-box/constants.json')
   },
   schema: {
     group: {
@@ -9,4 +10,46 @@ module.exports = {
     }
   },
   keySchemes: require('./key-schemes.json').scheme
+}
+
+// Use "npm test" to check all vectors are valid JSON
+if (!module.parent) {
+  const fs = require('fs')
+  const path = require('path')
+
+  print(underline('Test vectors'))
+  newline()
+  fs.readdir(path.join(__dirname, 'vectors'), (_, fileNames) => {
+    fileNames.forEach(fileName => {
+      try {
+        print(fileName)
+        const vector = require(path.join(__dirname, 'vectors', fileName))
+
+        isTrue(isString(vector.type), 'type')
+        isTrue(isString(vector.description), 'description')
+        isTrue(isObject(vector.input), 'input')
+        isTrue(isObject(vector.output), 'output')
+      } catch (err) {
+        print(red('! is not valid JSON'), 4)
+      }
+      newline()
+    })
+  })
+}
+
+function print (s, indent = 2) { console.log(new Array(indent).fill(' ').join('') + s) }
+function underline (s) { return '\x1b[4m' + s + '\x1b[0m' }
+function newline () { console.log() }
+function green (s) { return '\x1b[32m' + s + '\x1b[0m' }
+function red (s) { return '\x1b[31m' + s + '\x1b[0m' }
+
+function isString (s) { return typeof s === 'string' && s.length > 0 }
+function isObject (o) {
+  return typeof o === 'object' && o !== null && !Array.isArray(o) &&
+    Object.keys(o).length > 0
+}
+function isTrue (bool, msg = '') {
+  bool
+    ? print(green('✓ ') + msg, 4)
+    : print(red('✗ ' + msg), 4)
 }

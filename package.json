@@ -4,7 +4,7 @@
   "description": "a spec for private groups in scuttlebutt, using envelope encryption",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",

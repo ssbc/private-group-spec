@@ -22,8 +22,8 @@ var msg = {
 Note the `msg.value.content` is of form `<base64>.box2`
 
 See the [envelope-spec](https://github.com/ssbc/envelope-spec) for how to derive this ciphertext, noting:
-- `feed_id` is a binary encoding of `msg.value.author` (see `envelope-spec/encoding/tfk.md`)
-- `prev_msg_id` is a binary encoding of `msg.value.previous` (see `envelope-spec/encoding/tfk.md`)
+- `feed_id` is a binary encoding of `msg.value.author` (see [BFE])
+- `prev_msg_id` is a binary encoding of `msg.value.previous` (see [BFE])
   - if `previous` is `null`, encode the key part of `prev_msg_id` as a zero-filled buffer of the same length you'd normally have (for that type/format combo)
 - the envelope-spec returns the ciphertext as a Buffer, while in this layers we:
   - encode that as a base64 encoded string
@@ -58,3 +58,5 @@ Scenarios:
 - vector2: unboxing a message from a person you're in some groups with (previous: null)
 - vector3: unboxing a direct message
 - vector4: creating a boxed content to a group + individual
+
+[BFE]: https://github.com/ssb-ngi-pointer/ssb-bfe-spec

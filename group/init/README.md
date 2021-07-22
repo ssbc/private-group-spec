@@ -41,8 +41,8 @@ Adding people to the group would interfere with the [`add-member` spec](../add-m
 var feedId = '@+oaWWDs8g73EZFUMfW37R/ULtFEjwKN/DczvdYihjbU=.ed25519'
 var prevMsgId = '%Zz+Inkte70Qz1UVKUHIhOgo16Oj/n37PfgmIzLDBgZw=.sha256'
 
-var feed_id = ... tfk binary encoding of feed_id
-var prev_msg_id = ... tfk binary encoding of feed_id
+var feed_id = ... BFE binary encoding of feed_id
+var prev_msg_id = ... BFE binary encoding of feed_id
 
 var group_key = ... symetric key as buffer
 vat msg_key = ... make up a one use key for the msg

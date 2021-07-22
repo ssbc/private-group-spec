@@ -21,30 +21,30 @@ In adition to the envelope-spec, there are some scuttlebutt-specific specificati
 
 box1 took feedIds from the `content.recps` field and directly used these for encryption.
 
-In envelope, we instead take "ids" from `content.recps`, and map each to a pair `{ key, scheme }` where":
-- `key` is the shared key which we're going to a `key_slot`, and 
+In envelope, we instead take "ids" from `content.recps`, and map each to a key+scheme pair `{ key, scheme }` where":
+- `key` is the encryption key which will be used in a `key_slot`, and 
 - `scheme` is the "key management scheme" which that key is employing
 
-Type of id            | How `key` is found                                 | `scheme`
+Type of id            | How `key` is derived                               | `scheme`
 ----------------------|----------------------------------------------------|-----------------------------------------
 private group id      | [a key-store](./group/group-id/README.md)          | "envelope-large-symmetric-group"
-another feedId        | [diff-hellman styles](./direct-messages/README.md) | "envelope-id-based-dm-converted-ed25519"
-your feedId           | [locally stored key](./direct-messages/README.md)  | "envelope-symmetric-key-for-self"
-published public key  | TODO                                               | ???
+feedId (someone else) | [diff-hellman styles](./direct-messages/README.md) | "envelope-id-based-dm-converted-ed25519"
+feedId (yours)        | [locally stored key](./direct-messages/README.md)  | "envelope-symmetric-key-for-self"
+P.O. Box id           | [diffie-hellman styles](./po-box/README.md)        | "envelope-id-based-pobox-curve25519"
 
 see `key-schemes.json` for the canonical list of accepted schema labels
 
 ### recipient restrictions
 
 We talk about `key_slots` or recipients / `recps` a little interchangeably.
-Let's assume `recps` are mapped to `key_slots` preserving their order.
+Let's assume `content.recps` are mapped to `key_slots` preserving their order.
 
 :warning: The following restrictions must be followed :
 
 1. there are max 16 slots on a message
 2. if there is a group key
-    - a) there is only 1 group key in the slot
-    - b) the group key is in the first slot
+    - a) there is only 1 group key
+    - b) the group key is in the first key_slot
 3. we disallow you from making a shared DM key with yourself
 
 More detail:
