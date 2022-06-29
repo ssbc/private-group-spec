@@ -20,7 +20,7 @@ NOTE:
 - the data needs converting from URI encoding to base64 string encoding, then into a buffer
 - this is the ID of a PO_BOX, the data part is a curve25519 key, which is ready for Diffie-Hellman scalar multiplicate
 
-When I see a `pobox_id` listed in `content.recps`, I derive a key for the envleope key_slot like so:
+When I see a `pobox_id` listed in `content.recps`, I derive a key for the envelope key_slot like so:
 
 ```js
 const hash = 'SHA256'
