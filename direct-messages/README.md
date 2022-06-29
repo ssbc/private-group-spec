@@ -22,9 +22,9 @@ Such a message can simultaneously:
 When we see a `feed_id` in `content.recps` we need to map this to a key we will used in a `recp_key`.
 How we do that depends on whether the `feed_id` is ours (the authors).
 
-The two cases
-    - **A. Foreign case** - mapping some elses `feed_id` to `recp_key`
-    - **B. Self case** - mapping our own `feed_id` to `recp_key`
+The two cases:
+ - **A. Foreign case** - mapping some elses `feed_id` to `recp_key`
+ - **B. Self case** - mapping our own `feed_id` to `recp_key`
 
 ### A. Foreign case - mapping _some elses_ `feed_id` to `recp_key`
 
