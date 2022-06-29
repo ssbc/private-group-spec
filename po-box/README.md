@@ -41,7 +41,7 @@ function poboxSlotKey (x_dh_secret, x_dh_public, x_id_bfe, y_dh_public, y_id_bfe
 }
 ```
 
-If you are _encrypting_ a message to a P.O. Box, `x` is your feed, and `y` is the P.O. Box
+If you are _encrypting_ a message to a P.O. Box, `x` is your feed, and `y` is the P.O. Box.  
 If you are _decrypting_ a message that was sent to a P.O. Box `x` is the P.O. Box, and `y` is the message author.
 
 - `(dh_secret, dh_public)` is some Diffie-Hellman compatible keypair to be used for encryption 
@@ -51,7 +51,7 @@ If you are _decrypting_ a message that was sent to a P.O. Box `x` is the P.O. Bo
 - `*_id_bfe` is the "id" of a feed/ P.O. Box, encoded in "type-format-key" format (see [BFE])
 - `||` means Buffer concat
 - `sort` means sort these 2 buffers bytewise so that the smallest is first
-- `slp.encode` is "shallow length-prefixed encode" (see [SLP][SLP])
+- `slp.encode` is "shallow length-prefixed encode" (see [SLP])
 - `bfe.encode` is bfe encoding of the encryption key, here with `type: 3, format 1` (see [BFE])
 
 Differences from direct message function:
@@ -151,3 +151,4 @@ If the encrypted message from someone else, I can decrypt it by:
 
 [BFE]: https://github.com/ssb-ngi-pointer/ssb-bfe-spec
 [ssb-uri]: https://github.com/ssb-ngi-pointer/ssb-uri-spec
+[SLP]: https://github.com/ssbc/envelope-spec/blob/master/encoding/slp.md
