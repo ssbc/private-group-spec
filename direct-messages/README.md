@@ -10,7 +10,7 @@ to the `recps` field of thier message and be confident you will receive it!
 You can also combine DM with `group_id` or `pobox_id`, in which case whether you need to include
 your own `feed_id` depends on whether you're part of the group or pobox
 
-One example of these combined recps is when adding a new member to a group with a `grou/add-member` msg.
+One example of these combined recps is when adding a new member to a group with a `group/add-member` msg.
 Here you have recps = `[group_id, feed_id, feed_id, ...]` (NOTE `group_id` must be in first slot, and can
 be followed by up to 15 other `feed_id` - the people you're adding).
 Such a message can simultaneously:
