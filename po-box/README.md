@@ -139,6 +139,7 @@ Later to decrypt this:
 
 ## Algorithm for decrypting a P.O. Box based
 
+```
 If the encrypted message is one I sent, I can decrypt it by:
     - trying my `own_key` on all slots of the envelope
         - if success, then this was a message you sent to a P.O. Box
@@ -148,6 +149,7 @@ If the encrypted message from someone else, I can decrypt it by:
         - if success, then I am an outsider receiving a reply from someone in the P.O. Box
     - trying a key derived from `pobox_dh_secret` and `author_dh_public` (etc.) for each P.O. Box I have secret keys for
         - if success, then this was a message to/ from a P.O. Box I have keys to
+```
 
 [BFE]: https://github.com/ssb-ngi-pointer/ssb-bfe-spec
 [ssb-uri]: https://github.com/ssb-ngi-pointer/ssb-uri-spec
