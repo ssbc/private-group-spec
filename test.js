@@ -26,8 +26,7 @@ fs.readdir(path.join(__dirname, 'vectors'), (_, fileNames) => {
           key === 'my_dh_public' ||
           key === 'your_dh_public'
         ) isTrue(isTypeFormat(vector.input[key], TF.encryptionKeys.dm), key + ' is dm key')
-
-        if (
+        else if (
           key === 'po_box_dh_public'
         ) isTrue(isTypeFormat(vector.input[key], TF.encryptionKeys.poBox), key + ' is poBox key')
       }
