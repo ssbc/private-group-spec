@@ -17,7 +17,7 @@ for the `group/init` message which started the group.
 ## Example
 
 ```
-ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=.cloaked
+ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=
 ```
 
 I.e. in the format of an [SSB URI](https://github.com/ssbc/ssb-uri-spec)
@@ -33,7 +33,7 @@ We also use this in the `content.recps` field of classic messages.
 var content = {
   //...
   recps: [
-    "ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=.cloaked", // << a cloaked group_id
+    "ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=", // << a cloaked group_id
     "ssb:feed/buttwoo-v1/APaWWDs8g73EZFUMfW37RBULtFEjwKNbDczvdYiRXtA=",
   ],
 };

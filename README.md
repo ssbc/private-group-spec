@@ -84,10 +84,10 @@ Group IDs have moved from being sigil links like
 to being [SSB URIS](https://github.com/ssbc/ssb-uri-spec) like
 
 ```
-ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=.cloaked
+ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=
 ```
 
-## scuttlebutt private-groups spec (v3)
+## scuttlebutt private-groups spec (v3 ?)
 
 Could modify this spec:
 
