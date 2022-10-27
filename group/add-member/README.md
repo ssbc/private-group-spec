@@ -4,35 +4,36 @@ This is about adding people to your group
 
 ```js
 var content = {
-  type: 'group/add-member',
-  version: 'v1',
-  groupKey: '3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=',
-  root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
-  text: 'welcome keks!',                                      // optional
+  type: "group/add-member",
+  version: "v1",
+  groupKey: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
+  root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
+  text: "welcome keks!", // optional
   recps: [
-    '%vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=.cloaked',  // group_id
-    '@YXkE3TikkY4GFMX3lzXUllRkNTbj5E+604AkaO1xbz8=.ed25519'   // feed_id (for new person)
+    "ssb:identity/group/vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=", // group_id
+    "ssb:feed/classic/YXkE3TikkY4GFMX3lzXUllRkNTbj5E-604AkaO1xbz8=", // feed_id (for new person)
   ],
 
   tangles: {
     group: {
-      root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
+      root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
       previous: [
-        '%Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS/BZ9E=.sha256'
-      ]
+        "ssb:message/classic/Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS_BZ9E=",
+      ],
     },
     members: {
-      root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
+      root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
       previous: [
-        '%lm6Sqk3fFJA2EQFiyJ1MSASDASDASDASDASDAS/BZ9E=.sha256',
-        '%Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS/BZ9E=.sha256'
-      ]
-    }
-  }
-}
+        "ssb:message/classic/lm6Sqk3fFJA2EQFiyJ1MSASDASDASDASDASDAS_BZ9E=",
+        "ssb:message/classic/Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS_BZ9E=",
+      ],
+    },
+  },
+};
 ```
 
 Notes:
+
 - `root` is the same as `tangles.group.root`
   - the redundancy is here to make it more obvious which root you should be using the compute `group_id`
   - in the future our tangles may be _cloaked_ which means this key would become more important

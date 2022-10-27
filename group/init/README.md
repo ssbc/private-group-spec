@@ -32,14 +32,12 @@ with the only `recipient_key` being the symmetric `group_key` for this new group
 Do not be tempted to overload this initialisation message.
 Adding people to the group would interfere with the [`add-member` spec](../add-member/README.md)
 
-
 ## Detailed Example (js)
-
 
 ```js
 // assume you already know your feedId + prevMsgId for this feed
-var feedId = '@+oaWWDs8g73EZFUMfW37R/ULtFEjwKN/DczvdYihjbU=.ed25519'
-var prevMsgId = '%Zz+Inkte70Qz1UVKUHIhOgo16Oj/n37PfgmIzLDBgZw=.sha256'
+var feedId = 'ssb:feed/classic/-oaWWDs8g73EZFUMfW37R_ULtFEjwKN_DczvdYihjbU='
+var prevMsgId = 'ssb:message/classic/Zz-Inkte70Qz1UVKUHIhOgo16Oj_n37PfgmIzLDBgZw=.sha256'
 
 var feed_id = ... BFE binary encoding of feed_id
 var prev_msg_id = ... BFE binary encoding of feed_id

@@ -31,7 +31,7 @@
       "type": "array",
       "items": [
         {
-          "$ref": "#/definitions/cloakedMessageId"
+          "$ref": "#/definitions/groupId"
         }
       ],
       "additionalItems": {
@@ -60,15 +60,15 @@
   "definitions": {
     "messageId": {
       "type": "string",
-      "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.sha256$"
+      "pattern": "^ssb:message\/classic\/[a-zA-Z0-9_\\-]{43}[AEIMQUYcgkosw048]=$"
     },
-    "cloakedMessageId": {
+    "groupId": {
       "type": "string",
-      "pattern": "^%[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.cloaked$"
+      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{43}[AEIMQUYcgkosw048]=$"
     },
     "feedId": {
       "type": "string",
-      "pattern": "^@[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=.(?:sha256|ed25519)$"
+      "pattern": "^ssb:feed/classic/[a-zA-Z0-9_\\-]{43}[AEIMQUYcgkosw048]=$"
     },
     "tangle": {
       "root": {

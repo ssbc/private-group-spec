@@ -33,8 +33,8 @@ We also use this in the `content.recps` field of classic messages.
 var content = {
   //...
   recps: [
-    "ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=", // << a cloaked group_id
-    "ssb:feed/buttwoo-v1/APaWWDs8g73EZFUMfW37RBULtFEjwKNbDczvdYiRXtA=",
+    "ssb:identity/group/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=", // << a group_id
+    "ssb:feed/classic/APaWWDs8g73EZFUMfW37RBULtFEjwKNbDczvdYiRXtA=",
   ],
 };
 ```
