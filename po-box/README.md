@@ -67,7 +67,12 @@ Differences from direct message function:
   - these do not need converting to curve25519 - they already are!
 
 The **complete key-and-scheme** for the envelope `key_recp` slot is of form
-`js { key: Buffer, // the poboxSlotKey scheme: "envelope-id-based-pobox-curve25519" } `
+    ```js
+    { 
+      key: Buffer, // the poboxSlotKey
+      scheme: "envelope-id-based-pobox-curve25519"
+    }
+    ```
 
 ## Example
 

@@ -33,9 +33,9 @@ The two cases:
 We define a shared key that the sender (us) + recipient can both derive:
 
 ```js
-const hash = "SHA256";
-const length = 32;
-const salt = SHA256("envelope-dm-v1-extract-salt");
+const hash = 'SHA256'
+const length = 32
+const salt = SHA256('envelope-dm-v1-extract-salt')
 
 function directMessageSlotKey(
   my_dh_secret,
@@ -44,16 +44,16 @@ function directMessageSlotKey(
   your_dh_public,
   your_id_bfe
 ) {
-  var input_keying_material = scalarmult(my_dh_secret, your_dh_public);
+  var input_keying_material = scalarmult(my_dh_secret, your_dh_public)
 
-  var info_context = Buffer.from("envelope-ssb-dm-v1/key", "utf8");
+  var info_context = Buffer.from('envelope-ssb-dm-v1/key', 'utf8')
   var info_keys = sort([
     bfe.encode(3, 0, my_dh_public) || my_id_bfe,
-    bfe.encode(3, 0, your_dh_public) || your_id_bfe,
-  ]);
-  var info = slp.encode([info_context, ...info_keys]);
+    bfe.encode(3, 0, your_dh_public) || your_id_bfe
+  ])
+  var info = slp.encode([info_context, ...info_keys])
 
-  return hkdf(input_keying_material, length, { salt, info, hash });
+  return hkdf(input_keying_material, length, { salt, info, hash })
 }
 ```
 
@@ -67,7 +67,12 @@ function directMessageSlotKey(
 - `slp.encode` is "shallow length-prefixed encode" (see [SLP])
 
 The **complete key-and-scheme** you try with a slot is of form
-`js { key: Buffer, // the directMessageSlotKey scheme: "envelope-id-based-dm-converted-ed25519" } `
+    ```js
+    { 
+      key: Buffer, // the directMessageSlotKey
+      scheme: "envelope-id-based-dm-converted-ed25519"
+    }
+    ```
 
 ### B. Self case - mapping _our own_ `feed_id` to `recp_key`
 
@@ -94,7 +99,12 @@ Notes:
   - includes un-cloaked tangle info about the group, which may leak private info (e.g. feeds / devices you don't want known)
 
 The **complete key-and-scheme** for the envelope `key_recp` slot is of form
-`js { key: Buffer, // the directMessageSlotKey scheme: "envelope-id-based-dm-converted-ed25519" } `
+    ```js
+    { 
+      key: Buffer, // the directMessageSlotKey
+      scheme: "envelope-id-based-dm-converted-ed25519"
+    }
+    ```
 
 ## Example
 
@@ -126,10 +136,10 @@ using the above definition
 var content = {
   //...
   recps: [
-    "ssb:identity/group/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=",
-    "ssb:feed/classic/YjoQc7sLF_ye-QM09iPcDJdzQo3lQD6YvQIFhmNbEqg=", // << a feed_id
-  ],
-};
+    'ssb:identity/group/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=',
+    'ssb:feed/classic/YjoQc7sLF_ye-QM09iPcDJdzQo3lQD6YvQIFhmNbEqg=' // << a feed_id
+  ]
+}
 ```
 
 [slp]: https://github.com/ssbc/envelope-spec/blob/master/encoding/slp.md
