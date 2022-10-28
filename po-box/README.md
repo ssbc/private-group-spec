@@ -2,7 +2,7 @@
 
 A Post Office Box is an address which is at a distance from where an individual or group physically reside, which lends some anonymity while still allowing people to contact that individual/group.
 
-P.O. Box messages are based on a curve25119 keypair which is _only used for encryption_ (never for signing anything), and it is very similar to direct-messages to to foreign feedIds (case A.), with a couple of important differences
+P.O. Box messages are based on a curve25119 keypair which is _only used for encryption_ (never for signing anything), and it is very similar to direct-messages to foreign feedIds (case A.), with a couple of important differences
 
 ## Mapping `pobox_id` to `recp_key`
 
