@@ -9,8 +9,8 @@ var msg = {
   key: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
   value: {
     previous:
-      "ssb:message/classic/Tq07Se6h1qwnQKbg/JTmMEjG4JP2aQAO0LM8tIoRtNk=",
-    author: "ssb:feed/classic/ye+QM09iPcDJD6YvQYjoQc7sLF/IFhmNbEqgdzQo3lQ=",
+      "ssb:message/classic/Tq07Se6h1qwnQKbg_JTmMEjG4JP2aQAO0LM8tIoRtNk=",
+    author: "ssb:feed/classic/ye-QM09iPcDJD6YvQYjoQc7sLF_IFhmNbEqgdzQo3lQ=",
     sequence: 29048,
     timestamp: 1581539387846,
     hash: "sha256",
