@@ -17,7 +17,7 @@ for the `group/init` message which started the group.
 ## Example
 
 ```
-ssb:message/cloaked/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=
+ssb:identity/group/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=
 ```
 
 I.e. in the format of an [SSB URI](https://github.com/ssbc/ssb-uri-spec)
