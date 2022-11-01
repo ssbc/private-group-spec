@@ -1,4 +1,14 @@
 const Validator = require('is-my-ssb-valid')
+const definitions = require('./group/definitions/schema.json')
+const initSchema = require('./group/init/schema.json')
+const addMemberSchema = {
+  ...require('./group/add-member/schema.json'),
+  definitions
+}
+const contentSchema = {
+  ...require('./group/content/schema.json'),
+  definitions
+}
 
 module.exports = {
   constants: {
@@ -7,14 +17,16 @@ module.exports = {
   },
   schema: {
     group: {
-      init: require('./group/init/schema.json'),
-      addMember: require('./group/add-member/schema.json')
+      init: initSchema,
+      addMember: addMemberSchema,
+      content: contentSchema
     }
   },
   validator: {
     group: {
-      init: Validator(require('./group/init/schema.json')),
-      addMember: Validator(require('./group/add-member/schema.json'))
+      init: Validator(initSchema),
+      addMember: Validator(addMemberSchema),
+      content: Validator(contentSchema)
     }
   },
   keySchemes: require('./key-schemes.json').scheme
