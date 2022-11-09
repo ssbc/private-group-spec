@@ -4,11 +4,11 @@
   "input": {
     "msgs": [
       {
-        "key": "%iPTskfm08k9sfg/i8aXwXbdefCzBuUeaNey507slX/I=.sha256",
+        "key": "ssb:message/classic/iPTskfm08k9sfg_i8aXwXbdefCzBuUeaNey507slX_I=",
         "value": {
           "previous": null,
           "sequence": 1,
-          "author": "@GU3nw+rEjXOEKEXFxqf1WeVUZX42bHrJRUJfwrhW+bg=.ed25519",
+          "author": "ssb:feed/classic/GU3nw-rEjXOEKEXFxqf1WeVUZX42bHrJRUJfwrhW-bg=",
           "timestamp": 1592534932480,
           "hash": "sha256",
           "content": "PGHe5NpkJJgv71rhqa+tLNGy2K/cvnWpPVFpKJEllWweHfXvq4+rbdwbw3e1ax5RLMP+708zpulqy/Y/TvlYe6D4cT7cqiLhRD8NzdM0W28t9YGNJWbJpjW2NccdSRBPD0ZIuwAkXyshosUrxi8CrbmW+4XfFmGPXu8DzHTqpN+j56kyKFd//SfVd8Dy5GwZLpKZPYf62dpInTQlJkPb6NcJQ3+lUe1hhi97iOtIhsB/8jtOPjF/V6qUXrSu/nCs/g==.box2",
@@ -34,7 +34,7 @@
         "type": "alert",
         "text": "get ready to scuttle!",
         "recps": [
-          "%VTmwWB0ou53Tj99NPyu2iomZuzhVwp0CIiovdeZCKRg=.cloaked"
+          "ssb:identity/group/VTmwWB0ou53Tj99NPyu2iomZuzhVwp0CIiovdeZCKRg="
         ]
       }
     ]

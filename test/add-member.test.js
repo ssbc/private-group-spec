@@ -3,17 +3,27 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
+const crypto = require('crypto')
 const { SecretKey } = require('ssb-private-group-keys')
 const isValid = require('../').validator.group.addMember
-const GroupId = () => `%${new SecretKey().toString()}.cloaked`
-const FeedId = () => '@YXkE3TikkY4GFMX3lzXUllRkNTbj5E+604AkaO1xbz8=.ed25519'
+
+const key = () =>
+  crypto
+    .randomBytes(32)
+    .toString('base64')
+    .replaceAll('/', '_')
+    .replaceAll('+', '-')
+
+const GroupId = () => `ssb:identity/group/${key()}`
+const FeedId = () => `ssb:feed/classic/${key()}`
+const MsgId = () => `ssb:message/classic/${key()}`
 
 const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/add-member',
     version: 'v1',
-    groupKey: '3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=',
-    root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
+    groupKey: new SecretKey().toString(),
+    root: MsgId(),
     text: 'welcome keks!', // optional
     recps: [
       GroupId()
@@ -22,15 +32,12 @@ const Mock = (overwrite = {}) => {
 
     tangles: {
       group: {
-        root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
-        previous: ['%Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS/BZ9E=.sha256']
+        root: MsgId(),
+        previous: [MsgId()]
       },
       members: {
-        root: '%THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=.sha256',
-        previous: [
-          '%lm6Sqk3fFJA2EQFiyJ1MSASDASDASDASDASDAS/BZ9E=.sha256',
-          '%Sp294oBk7OJxizvPOlm6Sqk3fFJA2EQFiyJ1MS/BZ9E=.sha256'
-        ]
+        root: MsgId(),
+        previous: [MsgId(), MsgId()]
       }
     }
   }
@@ -76,14 +83,19 @@ test('is-group-add-member', (t) => {
   const tooManyRecps = Mock({ recps })
   t.false(isValid(tooManyRecps), 'fails if > 16 recps')
 
+  const gId = GroupId()
+  const badGroupId = gId.substring(0, 25) + '\\' + gId.substring(26)
+  const backslashRecps = Mock({ recps: [badGroupId, FeedId()] })
+  t.false(
+    isValid(backslashRecps),
+    "doesn't accept a groupId with a backslash in it"
+  )
+
   // TODO // test more edge cases
 
   /* not sure how to code this in v4 draft compatible JSON schema */
   const noGroupRecps = Mock({
-    recps: [
-      '@zXUllRkNYXkE3TikkY4GFMX3lTbj5E+604AkaO1xbz8=.ed25519',
-      '@YXkE3TikkY4GFMX3lzXUllRkNTbj5E+604AkaO1xbz8=.ed25519'
-    ]
+    recps: [FeedId(), FeedId()]
   })
   t.false(isValid(noGroupRecps), 'fails if there is no group recp')
 
