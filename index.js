@@ -1,14 +1,23 @@
+const fs = require('fs')
 const Validator = require('is-my-ssb-valid')
 const definitions = require('./group/definitions/schema.json')
 const initSchema = require('./group/init/schema.json')
 const addMemberSchema = {
-  ...require('./group/add-member/schema.json'),
+  ...require('./group/add-member/partialSchema.json'),
   definitions
 }
+fs.writeFileSync(
+  './group/add-member/schema.json',
+  JSON.stringify(addMemberSchema, null, 2)
+)
 const contentSchema = {
-  ...require('./group/content/schema.json'),
+  ...require('./group/content/partialSchema.json'),
   definitions
 }
+fs.writeFileSync(
+  './group/content/schema.json',
+  JSON.stringify(contentSchema, null, 2)
+)
 
 module.exports = {
   constants: {
