@@ -17,46 +17,28 @@ const feedId = {
 const tangle = {
   root: {
     type: 'object',
-    required: [
-      'root',
-      'previous'
-    ],
+    required: ['root', 'previous'],
     properties: {
-      root: {
-        type: 'null'
-      },
-      previous: {
-        type: 'null'
-      }
+      root: { type: 'null' },
+      previous: { type: 'null' }
     }
   },
   update: {
     type: 'object',
-    required: [
-      'root',
-      'previous'
-    ],
+    required: ['root', 'previous'],
     properties: {
-      root: {
-        $ref: '#/definitions/messageId'
-      },
+      root: { $ref: '#/definitions/messageId' },
       previous: {
         type: 'array',
-        item: {
-          $ref: '#/definitions/messageId'
-        },
+        item: { $ref: '#/definitions/messageId' },
         minItems: 1
       }
     }
   },
   any: {
     oneOf: [
-      {
-        $ref: '#/definitions/tangle/root'
-      },
-      {
-        $ref: '#/definitions/tangle/update'
-      }
+      { $ref: '#/definitions/tangle/root' },
+      { $ref: '#/definitions/tangle/update' }
     ]
   }
 }
@@ -73,7 +55,6 @@ module.exports = {
   feedId: { feedId },
   tangle: {
     root: {
-      messageId,
       tangle: {
         root: tangle.root
       }

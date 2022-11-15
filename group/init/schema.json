@@ -23,11 +23,6 @@
   },
   "additionalProperties": false,
   "definitions": {
-    "messageId": {
-      "type": "string",
-      "$comment": "42 chars + 1 char from a limited subset (last bits are 0) + 1 =",
-      "pattern": "^ssb:message/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
-    },
     "tangle": {
       "root": {
         "type": "object",
