@@ -52,7 +52,7 @@
           "$ref": "#/definitions/tangle/update"
         },
         "members": {
-          "$ref": "#/definitions/tangle/any"
+          "$ref": "#/definitions/tangle/update"
         }
       }
     }
@@ -64,30 +64,15 @@
       "$comment": "42 chars + 1 char from a limited subset (last bits are 0) + 1 =",
       "pattern": "^ssb:message/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
-    "groupId": {
-      "type": "string",
-      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
-    },
     "feedId": {
       "type": "string",
       "pattern": "^ssb:feed/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
+    "groupId": {
+      "type": "string",
+      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+    },
     "tangle": {
-      "root": {
-        "type": "object",
-        "required": [
-          "root",
-          "previous"
-        ],
-        "properties": {
-          "root": {
-            "type": "null"
-          },
-          "previous": {
-            "type": "null"
-          }
-        }
-      },
       "update": {
         "type": "object",
         "required": [
@@ -106,16 +91,6 @@
             "minItems": 1
           }
         }
-      },
-      "any": {
-        "oneOf": [
-          {
-            "$ref": "#/definitions/tangle/root"
-          },
-          {
-            "$ref": "#/definitions/tangle/update"
-          }
-        ]
       }
     }
   }

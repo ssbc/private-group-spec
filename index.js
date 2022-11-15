@@ -1,23 +1,8 @@
-const fs = require('fs')
 const Validator = require('is-my-ssb-valid')
-const definitions = require('./group/definitions/schema.json')
-const initSchema = require('./group/init/schema.json')
-const addMemberSchema = {
-  ...require('./group/add-member/partialSchema.json'),
-  definitions
-}
-fs.writeFileSync(
-  './group/add-member/schema.json',
-  JSON.stringify(addMemberSchema, null, 2)
-)
-const contentSchema = {
-  ...require('./group/content/partialSchema.json'),
-  definitions
-}
-fs.writeFileSync(
-  './group/content/schema.json',
-  JSON.stringify(contentSchema, null, 2)
-)
+
+const groupInitSchema = require('./group/init/schema.json')
+const groupAddMemberSchema = require('./group/add-member/schema.json')
+const groupContentSchema = require('./group/content/schema.json')
 
 module.exports = {
   constants: {
@@ -26,16 +11,16 @@ module.exports = {
   },
   schema: {
     group: {
-      init: initSchema,
-      addMember: addMemberSchema,
-      content: contentSchema
+      init: groupInitSchema,
+      addMember: groupAddMemberSchema,
+      content: groupContentSchema
     }
   },
   validator: {
     group: {
-      init: Validator(initSchema),
-      addMember: Validator(addMemberSchema),
-      content: Validator(contentSchema)
+      init: Validator(groupInitSchema),
+      addMember: Validator(groupAddMemberSchema),
+      content: Validator(groupContentSchema)
     }
   },
   keySchemes: require('./key-schemes.json').scheme
