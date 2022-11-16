@@ -8,8 +8,8 @@ This is about adding people to your group
 var content = {
   type: "group/add-member",
   version: "v2",
-  groupKey: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
   root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
+  secret: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
   text: "welcome keks!", // optional
   recps: [
     "ssb:identity/group/vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=", // group_id
