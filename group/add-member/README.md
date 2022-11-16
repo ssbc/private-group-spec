@@ -13,7 +13,7 @@ var content = {
   text: "welcome keks!", // optional
   recps: [
     "ssb:identity/group/vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=", // group_id
-    "ssb:feed/classic/YXkE3TikkY4GFMX3lzXUllRkNTbj5E-604AkaO1xbz8=", // feed_id (for new person)
+    "ssb:feed/bendybutt-v1/YXkE3TikkY4GFMX3lzXUllRkNTbj5E-604AkaO1xbz8=", // feed_id (for new person)
   ],
 
   tangles: {
