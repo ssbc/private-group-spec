@@ -7,7 +7,7 @@ This is about adding people to your group
 ```js
 var content = {
   type: "group/add-member",
-  version: "v1",
+  version: "v2",
   groupKey: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
   root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
   text: "welcome keks!", // optional
