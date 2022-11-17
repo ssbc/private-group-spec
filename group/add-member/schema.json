@@ -52,7 +52,7 @@
           "$ref": "#/definitions/tangle/update"
         },
         "members": {
-          "$ref": "#/definitions/tangle/update"
+          "$ref": "#/definitions/tangle/any"
         }
       }
     }
