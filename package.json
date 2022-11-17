@@ -4,7 +4,9 @@
   "description": "a spec for private groups in scuttlebutt, using envelope encryption",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js && tape test/*.test.js | tap-arc --bail"
+    "test": "node test.js && tape test/*.test.js | tap-arc --bail",
+    "generate-schema": "node generate-schema.js",
+    "lint": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "ssb-private-group-keys": "^1.0.0",
+    "standard": "^17.0.0",
     "tap-arc": "^0.3.4",
     "tape": "^5.5.3"
   }
