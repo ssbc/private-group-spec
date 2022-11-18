@@ -3,20 +3,9 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const crypto = require('crypto')
 const { SecretKey } = require('ssb-private-group-keys')
 const isValid = require('../').validator.group.addMember
-
-const key = () =>
-  crypto
-    .randomBytes(32)
-    .toString('base64')
-    .replaceAll('/', '_')
-    .replaceAll('+', '-')
-
-const GroupId = () => `ssb:identity/group/${key()}`
-const FeedId = () => `ssb:feed/classic/${key()}`
-const MsgId = () => `ssb:message/classic/${key()}`
+const { GroupId, FeedId, MsgId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
@@ -46,7 +35,7 @@ const Mock = (overwrite = {}) => {
   return Object.assign(base, overwrite)
 }
 
-function times(n, fn) {
+function times (n, fn) {
   for (let i = 0; i < n; i++) {
     fn(i)
   }

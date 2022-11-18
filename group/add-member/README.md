@@ -1,5 +1,7 @@
 # Adding group members
 
+:warning: schema.json is generated so don't modify it directly
+
 This is about adding people to your group
 
 ```js

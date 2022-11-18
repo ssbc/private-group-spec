@@ -16,22 +16,29 @@
       ],
       "properties": {
         "group": {
-          "type": "object",
-          "required": [
-            "root",
-            "previous"
-          ],
-          "properties": {
-            "root": {
-              "type": "null"
-            },
-            "previous": {
-              "type": "null"
-            }
-          }
+          "$ref": "#/definitions/tangle/root"
         }
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "definitions": {
+    "tangle": {
+      "root": {
+        "type": "object",
+        "required": [
+          "root",
+          "previous"
+        ],
+        "properties": {
+          "root": {
+            "type": "null"
+          },
+          "previous": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  }
 }
