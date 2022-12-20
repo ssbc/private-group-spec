@@ -13,7 +13,7 @@ const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/add-member',
     version: 'v2',
-    secret: new SecretKey().toString(),
+    groupKey: new SecretKey().toString(),
     root: groupRoot,
     creator: FeedId(),
     text: 'welcome keks!', // optional

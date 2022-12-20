@@ -4,7 +4,7 @@
   "required": [
     "type",
     "version",
-    "secret",
+    "groupKey",
     "root",
     "creator",
     "recps",
@@ -19,7 +19,7 @@
       "type": "string",
       "pattern": "^v2$"
     },
-    "secret": {
+    "groupKey": {
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
