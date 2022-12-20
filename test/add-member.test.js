@@ -8,11 +8,14 @@ const isValid = require('../').validator.group.addMember
 const { GroupId, FeedId, MsgId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
+  const groupRoot = MsgId()
+
   const base = {
     type: 'group/add-member',
-    version: 'v1',
-    groupKey: new SecretKey().toString(),
-    root: MsgId(),
+    version: 'v2',
+    secret: new SecretKey().toString(),
+    root: groupRoot,
+    creator: FeedId(),
     text: 'welcome keks!', // optional
     recps: [
       GroupId()
@@ -21,11 +24,11 @@ const Mock = (overwrite = {}) => {
 
     tangles: {
       group: {
-        root: MsgId(),
+        root: groupRoot,
         previous: [MsgId()]
       },
       members: {
-        root: MsgId(),
+        root: groupRoot,
         previous: [MsgId(), MsgId()]
       }
     }

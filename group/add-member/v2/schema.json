@@ -4,8 +4,9 @@
   "required": [
     "type",
     "version",
-    "groupKey",
+    "secret",
     "root",
+    "creator",
     "recps",
     "tangles"
   ],
@@ -16,14 +17,17 @@
     },
     "version": {
       "type": "string",
-      "pattern": "^v1$"
+      "pattern": "^v2$"
     },
-    "groupKey": {
+    "secret": {
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
     "root": {
       "$ref": "#/definitions/messageId"
+    },
+    "creator": {
+      "$ref": "#/definitions/feedId"
     },
     "text": {
       "type": "string"
@@ -52,7 +56,7 @@
           "$ref": "#/definitions/tangle/update"
         },
         "members": {
-          "$ref": "#/definitions/tangle/any"
+          "$ref": "#/definitions/tangle/update"
         }
       }
     }
@@ -66,7 +70,7 @@
     },
     "feedId": {
       "type": "string",
-      "pattern": "^ssb:feed/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+      "pattern": "^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
     "groupId": {
       "type": "string",

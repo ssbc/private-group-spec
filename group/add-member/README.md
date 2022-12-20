@@ -8,8 +8,9 @@ This is about adding people to your group
 var content = {
   type: "group/add-member",
   version: "v2",
-  root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
   secret: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
+  root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
+  creator: "ssb:feed/bendybutt-v1/VuVXdhDTHxjTGPuXvvxnbnAV7xcmoNtDDN0j3UTxcd8=",
   text: "welcome keks!", // optional
   recps: [
     "ssb:identity/group/vof09Dhy3YUat1ylIUVGaCjotAFxE8iGbF6QxLlCWWc=", // group_id
@@ -36,16 +37,19 @@ var content = {
 
 Notes:
 
+- `secret` is the symmetric key for the group
 - `root` is the same as `tangles.group.root`
   - the redundancy is here to make it more obvious which root you should be using the compute `group_id`
   - in the future our tangles may be _cloaked_ which means this key would become more important
+- `creator` is the root metafeed id of the creator of the group
+  - this is needed in case you don't already follow / replicate this person
 - `recps` must include the `group_id` and a `feed_id` (one or more)
   - this ensures that everyone has the same info about who's been added
   - if including multiple, keep in mind `max_attempts` of your application
 - all messages in the group are part of that groups tangle (see `tangles.group`)
   - this makes it possible to query things based on group (e.g. was this in my europe or pacifica group?)
   - provides partial ordering for all activity in the group
-- all `entrust` type messages are part of the membership tangle (see `tangles.members`)
+- all `group/add-member` type messages are part of the membership tangle (see `tangles.members`)
   - this makes it easy to build a history of additions to the group
 - the `tangles.group.root` and `tangles.members.root` are the same
   - this isn't true of all tangles

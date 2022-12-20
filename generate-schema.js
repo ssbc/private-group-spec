@@ -7,7 +7,7 @@ const fs = require('fs')
 
 const types = [
   'group/init',
-  'group/add-member',
+  'group/add-member/v2',
   'group/content'
 ]
 

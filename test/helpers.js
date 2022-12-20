@@ -8,7 +8,7 @@ const key = () =>
     .replace(/\+/g, '-')
 
 const GroupId = () => `ssb:identity/group/${key()}`
-const FeedId = () => `ssb:feed/classic/${key()}`
+const FeedId = () => `ssb:feed/bendybutt-v1/${key()}`
 const MsgId = () => `ssb:message/classic/${key()}`
 
 module.exports = {
