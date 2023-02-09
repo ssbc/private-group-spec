@@ -27,7 +27,7 @@ because the definition of `group_id` depends on the key of this message, which w
 be known until this is published.
 
 This means this initial message and it's content will need to be **manually boxed**,
-with the only `recipient_key` being the symmetric `group_key` for this new group.
+with the `recipient_key`s being the symmetric `group_key` for this new group as well as to yourself, for recovery purposes.
 
 Do not be tempted to overload this initialisation message.
 Adding people to the group would interfere with the [`add-member` spec](../add-member/README.md)
