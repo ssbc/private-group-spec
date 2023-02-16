@@ -2,12 +2,26 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { messageId, feedId, groupId, tangle } = require('../../definitions')
+const {
+  groupKey,
+  messageId,
+  feedId,
+  groupId,
+  tangle
+} = require('../../definitions')
 
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
   type: 'object',
-  required: ['type', 'version', 'groupKey', 'root', 'creator', 'recps', 'tangles'],
+  required: [
+    'type',
+    'version',
+    'groupKey',
+    'root',
+    'creator',
+    'recps',
+    'tangles'
+  ],
   properties: {
     type: {
       type: 'string',
@@ -17,10 +31,7 @@ module.exports = {
       type: 'string',
       pattern: '^v2$'
     },
-    groupKey: {
-      type: 'string',
-      pattern: '^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$'
-    },
+    groupKey: { $ref: '#/definitions/groupKey' },
     root: { $ref: '#/definitions/messageId' },
     creator: { $ref: '#/definitions/feedId' },
     text: { type: 'string' },
@@ -42,6 +53,7 @@ module.exports = {
   },
   additionalProperties: false,
   definitions: {
+    ...groupKey,
     ...messageId,
     ...feedId,
     ...groupId,

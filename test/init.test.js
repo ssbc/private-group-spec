@@ -4,10 +4,12 @@
 
 const test = require('tape')
 const isValid = require('../').validator.group.init
+const { GroupKey } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/init',
+    groupKey: GroupKey(),
     tangles: {
       group: {
         root: null,
@@ -19,6 +21,7 @@ const Mock = (overwrite = {}) => {
 }
 test('is-group-init', (t) => {
   t.true(isValid(Mock()), 'fully featured')
+  if (isValid.errors) throw isValid.errorsString
 
   const min = Mock()
   t.true(isValid(min), 'minimal')
