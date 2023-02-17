@@ -11,7 +11,7 @@ const groupId = {
 
 const feedId = {
   type: 'string',
-  pattern: '^ssb:feed/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$'
+  pattern: '^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$'
 }
 
 const tangle = {
