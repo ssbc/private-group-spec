@@ -1,6 +1,6 @@
 {
   "name": "private-group-spec",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "a spec for private groups in scuttlebutt, using envelope encryption",
   "main": "index.js",
   "scripts": {
