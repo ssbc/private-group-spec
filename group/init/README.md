@@ -48,6 +48,7 @@ vat msg_key = ... make up a one use key for the msg
 // here's the unencrypted init message
 var plainText = {
   type: 'group/init'
+  groupKey: group_key.toString('base64'),
   tangles: {
     group: {
       root: null,

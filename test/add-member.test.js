@@ -3,9 +3,8 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const { SecretKey } = require('ssb-private-group-keys')
 const isValid = require('../').validator.group.addMember
-const { GroupId, FeedId, MsgId } = require('./helpers')
+const { GroupKey, GroupId, FeedId, MsgId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const groupRoot = MsgId()
@@ -13,7 +12,7 @@ const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/add-member',
     version: 'v2',
-    groupKey: new SecretKey().toString(),
+    groupKey: GroupKey(),
     root: groupRoot,
     creator: FeedId(),
     text: 'welcome keks!', // optional
@@ -38,7 +37,7 @@ const Mock = (overwrite = {}) => {
   return Object.assign(base, overwrite)
 }
 
-function times (n, fn) {
+function times(n, fn) {
   for (let i = 0; i < n; i++) {
     fn(i)
   }
