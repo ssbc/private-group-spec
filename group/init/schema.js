@@ -15,9 +15,10 @@ module.exports = {
     groupKey: { $ref: '#/definitions/groupKey' },
     tangles: {
       type: 'object',
-      required: ['group'],
+      required: ['group', 'members'],
       properties: {
-        group: { $ref: '#/definitions/tangle/root' }
+        group: { $ref: '#/definitions/tangle/root' },
+        members: { $ref: '#/definitions/tangle/root' }
       }
     }
   },

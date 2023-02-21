@@ -16,10 +16,14 @@
     "tangles": {
       "type": "object",
       "required": [
-        "group"
+        "group",
+        "members"
       ],
       "properties": {
         "group": {
+          "$ref": "#/definitions/tangle/root"
+        },
+        "members": {
           "$ref": "#/definitions/tangle/root"
         }
       }

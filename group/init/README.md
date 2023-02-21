@@ -10,8 +10,13 @@ Here's how you initialise a group in the current JS stack
 // content you encode
 var plainText = {
   type: 'group/init'
+  groupKey: group_key.toString('base64'),
   tangles: {
     group: {
+      root: null,
+      previous: null
+    },
+    members: {
       root: null,
       previous: null
     }
@@ -51,6 +56,10 @@ var plainText = {
   groupKey: group_key.toString('base64'),
   tangles: {
     group: {
+      root: null,
+      previous: null
+    },
+    members: {
       root: null,
       previous: null
     }
