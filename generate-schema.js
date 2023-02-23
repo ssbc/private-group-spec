@@ -5,16 +5,12 @@
 const { join } = require('path')
 const fs = require('fs')
 
-const types = [
-  'group/init',
-  'group/add-member/v2',
-  'group/content'
-]
+const types = ['group/init/v2', 'group/add-member/v2', 'group/content']
 
 module.exports = types
 
 if (!module.parent) {
-  types.forEach(type => {
+  types.forEach((type) => {
     const inputPath = '.' + join('/', type, 'schema.js')
     const schema = require(inputPath)
 

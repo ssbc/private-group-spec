@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { groupKey, tangle } = require('../definitions')
+const { groupKey, tangle } = require('../../definitions')
 
 module.exports = {
   type: 'object',

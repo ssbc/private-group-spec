@@ -1,8 +1,8 @@
 const Validator = require('is-my-ssb-valid')
 
-const groupInitSchema = require('./group/init/schema.json')
+// NOTE some at v2 (for v1 see ./group/${type}/v1/schema.json)
+const groupInitSchema = require('./group/init/v2/schema.json')
 const groupAddMemberSchema = require('./group/add-member/v2/schema.json')
-// NOTE group/add-member at v2 (for v1 see ./group/add-member/v1/schema.json)
 const groupContentSchema = require('./group/content/schema.json')
 
 module.exports = {

@@ -2,6 +2,7 @@
   "type": "object",
   "required": [
     "type",
+    "version",
     "groupKey",
     "tangles"
   ],
@@ -9,6 +10,10 @@
     "type": {
       "type": "string",
       "pattern": "^group/init$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v2$"
     },
     "groupKey": {
       "$ref": "#/definitions/groupKey"
