@@ -9,6 +9,7 @@ const { GroupKey } = require('./helpers')
 const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/init',
+    version: 'v2',
     groupKey: GroupKey(),
     tangles: {
       group: {

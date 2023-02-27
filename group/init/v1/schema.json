@@ -2,18 +2,12 @@
   "type": "object",
   "required": [
     "type",
-    "version",
-    "groupKey",
     "tangles"
   ],
   "properties": {
     "type": {
       "type": "string",
       "pattern": "^group/init$"
-    },
-    "version": {
-      "type": "string",
-      "pattern": "^v2$"
     },
     "groupKey": {
       "$ref": "#/definitions/groupKey"
@@ -32,10 +26,6 @@
   },
   "additionalProperties": false,
   "definitions": {
-    "groupKey": {
-      "type": "string",
-      "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
-    },
     "tangle": {
       "root": {
         "type": "object",
