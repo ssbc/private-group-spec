@@ -42,9 +42,15 @@ var prevMsgId = 'ssb:message/classic/Zz-Inkte70Qz1UVKUHIhOgo16Oj_n37PfgmIzLDBgZw
 var feed_id = ... BFE binary encoding of feed_id
 var prev_msg_id = ... BFE binary encoding of feed_id
 
-var group_key = ... symmetric key as buffer
-var own_key = ... symmetric key as buffer
-var msg_key = ... make up a one use key for the msg
+var group_key = {
+  key: group_buffer, // group_buffer is symmetric key as buffer
+  scheme: 'envelope-large-symmetric-group'
+}
+var own_key = {
+  key: own_buffer, // own_buffer is a symmetric key as a buffer
+  scheme: 'envelope-symmetric-key-for-self'
+}
+var msg_key =  ... make up a one use key for the msg as a buffer
 
 // here's the unencrypted init message
 var plainText = {
