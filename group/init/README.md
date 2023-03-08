@@ -10,6 +10,7 @@ Here's how you initialise a group in the current JS stack
 // content you encode
 var plainText = {
   type: 'group/init'
+  version: 'v2',
   groupKey: group_key.toString('base64'),
   tangles: {
     group: {
