@@ -2,6 +2,7 @@
   "type": "object",
   "required": [
     "type",
+    "version",
     "groupKey",
     "tangles"
   ],
@@ -10,16 +11,24 @@
       "type": "string",
       "pattern": "^group/init$"
     },
+    "version": {
+      "type": "string",
+      "pattern": "^v2$"
+    },
     "groupKey": {
       "$ref": "#/definitions/groupKey"
     },
     "tangles": {
       "type": "object",
       "required": [
-        "group"
+        "group",
+        "members"
       ],
       "properties": {
         "group": {
+          "$ref": "#/definitions/tangle/root"
+        },
+        "members": {
           "$ref": "#/definitions/tangle/root"
         }
       }

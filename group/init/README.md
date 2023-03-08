@@ -10,8 +10,14 @@ Here's how you initialise a group in the current JS stack
 // content you encode
 var plainText = {
   type: 'group/init'
+  version: 'v2',
+  groupKey: group_key.toString('base64'),
   tangles: {
     group: {
+      root: null,
+      previous: null
+    },
+    members: {
       root: null,
       previous: null
     }
@@ -48,9 +54,14 @@ vat msg_key = ... make up a one use key for the msg
 // here's the unencrypted init message
 var plainText = {
   type: 'group/init'
+  version: 'v2',
   groupKey: group_key.toString('base64'),
   tangles: {
     group: {
+      root: null,
+      previous: null
+    },
+    members: {
       root: null,
       previous: null
     }

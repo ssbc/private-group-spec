@@ -9,9 +9,14 @@ const { GroupKey } = require('./helpers')
 const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/init',
+    version: 'v2',
     groupKey: GroupKey(),
     tangles: {
       group: {
+        root: null,
+        previous: null
+      },
+      members: {
         root: null,
         previous: null
       }
@@ -32,7 +37,7 @@ test('is-group-init', (t) => {
 
   const wrongTangle = Mock()
   delete wrongTangle.tangles.group
-  wrongTangle.tangles.members = { root: null, previous: null }
+  wrongTangle.tangles.potato = { root: null, previous: null }
   t.false(isValid(wrongTangle), 'fails if wrong tangle')
 
   const wrongRoot = Mock()
@@ -45,5 +50,10 @@ test('is-group-init', (t) => {
 
   const extrajunk = Mock({ name: 'doop' })
   t.false(isValid(extrajunk), 'fails if anything is added')
+
+  const missingMembers = Mock()
+  delete missingMembers.tangles.members
+  t.false(isValid(missingMembers), 'fails if members missing')
+
   t.end()
 })
