@@ -33,7 +33,7 @@ because the definition of `group_id` depends on the key of this message, which w
 be known until this is published.
 
 This means this initial message and it's content will need to be **manually boxed**,
-with the only `recipient_key` being the symmetric `group_key` for this new group.
+with the `recipient_key`s being the symmetric `group_key` for this new group as well as to your `own_key`, for recovery purposes.
 
 Do not be tempted to overload this initialisation message.
 Adding people to the group would interfere with the [`add-member` spec](../add-member/README.md)
@@ -48,8 +48,15 @@ var prevMsgId = 'ssb:message/classic/Zz-Inkte70Qz1UVKUHIhOgo16Oj_n37PfgmIzLDBgZw
 var feed_id = ... BFE binary encoding of feed_id
 var prev_msg_id = ... BFE binary encoding of feed_id
 
-var group_key = ... symetric key as buffer
-vat msg_key = ... make up a one use key for the msg
+var group_key = {
+  key: group_buffer, // group_buffer is symmetric key as buffer
+  scheme: 'envelope-large-symmetric-group'
+}
+var own_key = {
+  key: own_buffer, // own_buffer is a symmetric key as a buffer
+  scheme: 'envelope-symmetric-key-for-self'
+}
+var msg_key =  ... make up a one use key for the msg as a buffer
 
 // here's the unencrypted init message
 var plainText = {
@@ -70,7 +77,7 @@ var plainText = {
 
 var plain_text = .... stringify + buffer
 
-var ciphertext = envelope(plain_text, feed_id, prev_msg_id, msg_key, [ group_key ])
+var ciphertext = envelope(plain_text, feed_id, prev_msg_id, msg_key, [ group_key, own_key ])
 
 ciphertext ---> string + .box2
 ```
