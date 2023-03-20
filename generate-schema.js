@@ -5,7 +5,12 @@
 const { join } = require('path')
 const fs = require('fs')
 
-const types = ['group/init/v2', 'group/add-member/v2', 'group/content']
+const types = [
+  'group/init/v2',
+  'group/add-member/v2',
+  'group/content',
+  'group/exclude'
+]
 
 module.exports = types
 

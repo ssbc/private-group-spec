@@ -4,6 +4,7 @@ const Validator = require('is-my-ssb-valid')
 const groupInitSchema = require('./group/init/v2/schema.json')
 const groupAddMemberSchema = require('./group/add-member/v2/schema.json')
 const groupContentSchema = require('./group/content/schema.json')
+const groupExcludeSchema = require('./group/exclude/schema.json')
 
 module.exports = {
   constants: {
@@ -14,14 +15,16 @@ module.exports = {
     group: {
       init: groupInitSchema,
       addMember: groupAddMemberSchema,
-      content: groupContentSchema
+      content: groupContentSchema,
+      exclude: groupExcludeSchema
     }
   },
   validator: {
     group: {
       init: Validator(groupInitSchema),
       addMember: Validator(groupAddMemberSchema),
-      content: Validator(groupContentSchema)
+      content: Validator(groupContentSchema),
+      exclude: Validator(groupExcludeSchema)
     }
   },
   keySchemes: require('./key-schemes.json').scheme

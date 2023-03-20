@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "required": [
+    "type",
+    "excludes",
+    "recps",
+    "tangles"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "pattern": "^group/exclude$"
+    },
+    "excludes": {
+      "type": "array",
+      "item": {
+        "$ref": "#/definitions/feedId"
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "recps": {
+      "type": "array",
+      "item": {
+        "$ref": "#/definitions/groupId"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "tangles": {
+      "type": "object",
+      "required": [
+        "group",
+        "members"
+      ],
+      "properties": {
+        "group": {
+          "$ref": "#/definitions/tangle/update"
+        },
+        "members": {
+          "$ref": "#/definitions/tangle/update"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "groupKey": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "tangle": {
+      "root": {
+        "type": "object",
+        "required": [
+          "root",
+          "previous"
+        ],
+        "properties": {
+          "root": {
+            "type": "null"
+          },
+          "previous": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  }
+}
