@@ -90,5 +90,10 @@ test('is-group-add-member', (t) => {
   })
   t.false(isValid(noGroupRecps), 'fails if there is no group recp')
 
+  const sigilLink = Mock()
+  sigilLink.tangles.group.root =
+    '%shGMltJNglMNLpxdnDGz/Y+j6HukBelnCS84D+GR2DM=.sha256'
+  t.false(isValid(sigilLink), 'fails if a link is a sigil link and not a uri')
+
   t.end()
 })
