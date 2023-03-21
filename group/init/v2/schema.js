@@ -26,6 +26,15 @@ module.exports = {
         epoch: { $ref: '#/definitions/tangle/any' },
         members: { $ref: '#/definitions/tangle/root' }
       }
+    },
+    recps: {
+      type: 'array',
+      items: [
+        { $ref: '#/definitions/groupId' },
+        { $ref: '#/definitions/feedId' }
+      ],
+      minItems: 2,
+      maxItems: 2
     }
   },
   additionalProperties: false,

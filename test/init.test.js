@@ -4,7 +4,7 @@
 
 const test = require('tape')
 const isValid = require('../').validator.group.init
-const { MsgId, GroupKey } = require('./helpers')
+const { MsgId, GroupKey, GroupId, FeedId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
@@ -73,7 +73,8 @@ test('is-group-init', (t) => {
         root: null,
         previous: null
       }
-    }
+    },
+    recps: [GroupId(), FeedId()]
   })
   t.true(isValid(epochInit), 'epoch init')
 
