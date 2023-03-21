@@ -1,23 +1,28 @@
-// SPDX-FileCopyrightText: 2022 Mix Irving
+// SPDX-FileCopyrightText: 2023 Mix Irving
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const isValid = require('../').validator.group.content
+const isValid = require('../').validator.group.exclude
 const { GroupId, FeedId, MsgId } = require('./helpers')
 
 const base = {
-  type: 'potato',
+  type: 'group/exclude',
+  excludes: [FeedId(), FeedId()],
   recps: [GroupId()],
   tangles: {
     group: {
+      root: MsgId(),
+      previous: [MsgId(), MsgId()]
+    },
+    members: {
       root: MsgId(),
       previous: [MsgId(), MsgId()]
     }
   }
 }
 
-test('private group message with custom content', (t) => {
+test('exclude message', (t) => {
   t.true(isValid(base), 'minimal')
   if (isValid.errors) throw isValid.errorsString
 
@@ -28,28 +33,36 @@ test('private group message with custom content', (t) => {
     'can only send to 1 group'
   )
 
-  t.true(
+  t.false(
     isValid({
       ...base,
-      content: { boop: 'adoop' },
-      text: 'hello test post',
-      mentions: ['hii', 'whatsup']
+      excludes: []
     }),
-    'can have free form content'
+    "can't miss feeds to exclude"
   )
 
-  t.true(
+  const manyExcludes = []
+  for (let i = 0; i < 17; i++) manyExcludes.push(FeedId())
+  t.false(
+    isValid({
+      ...base,
+      excludes: manyExcludes
+    }),
+    "can't have too many excludes"
+  )
+
+  t.false(
     isValid({
       ...base,
       tangles: {
         ...base.tangles,
-        wiki: {
+        epoch: {
           root: MsgId(),
           previous: [MsgId(), MsgId(), MsgId()]
         }
       }
     }),
-    'can have other tangles'
+    "can't have other tangles"
   )
 
   t.end()

@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { groupKey, tangle } = require('../definitions')
+const { tangle, feedId, groupId } = require('../definitions')
 
 module.exports = {
   type: 'object',
@@ -14,19 +14,20 @@ module.exports = {
     },
     excludes: {
       type: 'array',
-      item: { $ref: '#/definitions/feedId' },
+      items: [{ $ref: '#/definitions/feedId' }],
       minItems: 1,
       maxItems: 16
     },
     recps: {
       type: 'array',
-      item: { $ref: '#/definitions/groupId' },
+      items: [{ $ref: '#/definitions/groupId' }],
       minItems: 1,
       maxItems: 1
     },
     tangles: {
       type: 'object',
       required: ['group', 'members'],
+      additionalProperties: false,
       properties: {
         group: { $ref: '#/definitions/tangle/update' },
         members: { $ref: '#/definitions/tangle/update' }
@@ -35,7 +36,8 @@ module.exports = {
   },
   additionalProperties: false,
   definitions: {
-    ...groupKey,
-    ...tangle.root
+    ...feedId,
+    ...groupId,
+    ...tangle.update
   }
 }

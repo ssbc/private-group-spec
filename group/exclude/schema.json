@@ -13,17 +13,21 @@
     },
     "excludes": {
       "type": "array",
-      "item": {
-        "$ref": "#/definitions/feedId"
-      },
+      "items": [
+        {
+          "$ref": "#/definitions/feedId"
+        }
+      ],
       "minItems": 1,
       "maxItems": 16
     },
     "recps": {
       "type": "array",
-      "item": {
-        "$ref": "#/definitions/groupId"
-      },
+      "items": [
+        {
+          "$ref": "#/definitions/groupId"
+        }
+      ],
       "minItems": 1,
       "maxItems": 1
     },
@@ -33,6 +37,7 @@
         "group",
         "members"
       ],
+      "additionalProperties": false,
       "properties": {
         "group": {
           "$ref": "#/definitions/tangle/update"
@@ -45,12 +50,21 @@
   },
   "additionalProperties": false,
   "definitions": {
-    "groupKey": {
+    "feedId": {
       "type": "string",
-      "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
+      "pattern": "^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "groupId": {
+      "type": "string",
+      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "messageId": {
+      "type": "string",
+      "$comment": "42 chars + 1 char from a limited subset (last bits are 0) + 1 =",
+      "pattern": "^ssb:message/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
     "tangle": {
-      "root": {
+      "update": {
         "type": "object",
         "required": [
           "root",
@@ -58,10 +72,14 @@
         ],
         "properties": {
           "root": {
-            "type": "null"
+            "$ref": "#/definitions/messageId"
           },
           "previous": {
-            "type": "null"
+            "type": "array",
+            "item": {
+              "$ref": "#/definitions/messageId"
+            },
+            "minItems": 1
           }
         }
       }
