@@ -35,7 +35,7 @@ const tangle = {
       root: { $ref: '#/definitions/messageId' },
       previous: {
         type: 'array',
-        item: { $ref: '#/definitions/messageId' },
+        items: [{ $ref: '#/definitions/messageId' }],
         minItems: 1
       }
     }
