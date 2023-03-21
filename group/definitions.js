@@ -76,7 +76,7 @@ module.exports = {
       tangle: {
         root: tangle.root,
         update: tangle.update,
-        any: tangle.update
+        any: tangle.any
       }
     }
   }

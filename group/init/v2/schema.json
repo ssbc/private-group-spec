@@ -25,6 +25,7 @@
         "members",
         "epoch"
       ],
+      "additionalProperties": false,
       "properties": {
         "group": {
           "$ref": "#/definitions/tangle/any"
@@ -44,6 +45,11 @@
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
+    "messageId": {
+      "type": "string",
+      "$comment": "42 chars + 1 char from a limited subset (last bits are 0) + 1 =",
+      "pattern": "^ssb:message/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+    },
     "tangle": {
       "root": {
         "type": "object",
@@ -59,6 +65,37 @@
             "type": "null"
           }
         }
+      },
+      "update": {
+        "type": "object",
+        "required": [
+          "root",
+          "previous"
+        ],
+        "properties": {
+          "root": {
+            "$ref": "#/definitions/messageId"
+          },
+          "previous": {
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/definitions/messageId"
+              }
+            ],
+            "minItems": 1
+          }
+        }
+      },
+      "any": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/tangle/root"
+          },
+          {
+            "$ref": "#/definitions/tangle/update"
+          }
+        ]
       }
     }
   }

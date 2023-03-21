@@ -20,6 +20,7 @@ module.exports = {
     tangles: {
       type: 'object',
       required: ['group', 'members', 'epoch'],
+      additionalProperties: false,
       properties: {
         group: { $ref: '#/definitions/tangle/any' },
         epoch: { $ref: '#/definitions/tangle/any' },
@@ -30,6 +31,6 @@ module.exports = {
   additionalProperties: false,
   definitions: {
     ...groupKey,
-    ...tangle.root
+    ...tangle.any // this also pulls in tangle.root
   }
 }
