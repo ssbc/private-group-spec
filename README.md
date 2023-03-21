@@ -63,6 +63,8 @@ A minimal amount of agreement to make coordination easier:
 
 - [creating a new group](./group/init/README.md)
 - [adding someone to your group](./group/add-member/README.md)
+- [posting a message to a group](./group/content/README.md)
+- [excluding someone from a group](./group/exclude/README.md)
 
 ---
 
