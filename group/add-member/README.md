@@ -51,8 +51,6 @@ Notes:
   - provides partial ordering for all activity in the group
 - all `group/add-member` type messages are part of the membership tangle (see `tangles.members`)
   - this makes it easy to build a history of additions to the group
-- the `tangles.group.root` and `tangles.members.root` are the same
-  - this isn't true of all tangles
-  - it's the same because it's a sub-tangle directly related to group initialisation
+- `tangles.members.root` points at the root message of the current epoch you're in. The "list" of members is essentially reset on each new epoch, which is why the members tangle `root` and `previous` are set to null in all group/epoch init messages.
 - all tangles info is "uncloaked" in this version of the spec
   - i.e. sharing this message content leaks info about what other messages/ authors are in the group
