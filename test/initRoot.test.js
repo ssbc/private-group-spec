@@ -4,7 +4,7 @@
 
 const test = require('tape')
 const isValid = require('../').validator.group.initRoot
-const { MsgId, GroupKey, GroupId, FeedId } = require('./helpers')
+const { GroupKey, MsgId, GroupId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
@@ -45,11 +45,11 @@ test('is-group-init', (t) => {
   t.false(isValid(wrongTangle), 'fails if wrong tangle')
 
   const wrongRoot = Mock()
-  wrongRoot.tangles.members.root = '%yap'
+  wrongRoot.tangles.members.root = MsgId()
   t.false(isValid(wrongRoot), 'fails if wrong members.root')
 
   const wrongPrev = Mock()
-  wrongPrev.tangles.members.previous = ['%yip', '%yap']
+  wrongPrev.tangles.members.previous = [MsgId(), MsgId()]
   t.false(isValid(wrongPrev), 'fails if wrong members.previous')
 
   const extrajunk = Mock({ name: 'doop' })
@@ -58,6 +58,10 @@ test('is-group-init', (t) => {
   const missingMembers = Mock()
   delete missingMembers.tangles.members
   t.false(isValid(missingMembers), 'fails if members missing')
+
+  const hasRecps = Mock()
+  hasRecps.recps = [GroupId()]
+  t.false(isValid(hasRecps), "fails if there's recps")
 
   t.end()
 })
