@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { groupKey, tangle } = require('../../definitions')
+const { groupKey, tangle, groupId, feedId } = require('../../definitions')
 
 module.exports = {
   type: 'object',
-  required: ['type', 'version', 'groupKey', 'tangles'],
+  required: ['type', 'version', 'groupKey', 'tangles', 'recps'],
   properties: {
     type: {
       type: 'string',
@@ -19,11 +19,11 @@ module.exports = {
     groupKey: { $ref: '#/definitions/groupKey' },
     tangles: {
       type: 'object',
-      required: ['group', 'members', 'epoch'],
+      required: ['group', 'epoch', 'members'],
       additionalProperties: false,
       properties: {
-        group: { $ref: '#/definitions/tangle/any' },
-        epoch: { $ref: '#/definitions/tangle/any' },
+        group: { $ref: '#/definitions/tangle/update' },
+        epoch: { $ref: '#/definitions/tangle/update' },
         members: { $ref: '#/definitions/tangle/root' }
       }
     },
@@ -40,6 +40,8 @@ module.exports = {
   additionalProperties: false,
   definitions: {
     ...groupKey,
-    ...tangle.any // this also pulls in tangle.root
+    ...groupId,
+    ...feedId,
+    ...tangle.any // this pulls in tangle.root and tangle.update
   }
 }

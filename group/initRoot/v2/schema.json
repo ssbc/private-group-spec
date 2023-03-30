@@ -22,10 +22,14 @@
       "type": "object",
       "required": [
         "group",
+        "epoch",
         "members"
       ],
       "properties": {
         "group": {
+          "$ref": "#/definitions/tangle/root"
+        },
+        "epoch": {
           "$ref": "#/definitions/tangle/root"
         },
         "members": {

@@ -1,7 +1,8 @@
 const Validator = require('is-my-ssb-valid')
 
 // NOTE some at v2 (for v1 see ./group/${type}/v1/schema.json)
-const groupInitSchema = require('./group/init/v2/schema.json')
+const groupInitRootSchema = require('./group/initRoot/v2/schema.json')
+const groupInitEpochSchema = require('./group/initEpoch/v2/schema.json')
 const groupAddMemberSchema = require('./group/add-member/v2/schema.json')
 const groupContentSchema = require('./group/content/schema.json')
 const groupExcludeSchema = require('./group/exclude/schema.json')
@@ -13,7 +14,8 @@ module.exports = {
   },
   schema: {
     group: {
-      init: groupInitSchema,
+      initRoot: groupInitRootSchema,
+      initEpoch: groupInitEpochSchema,
       addMember: groupAddMemberSchema,
       content: groupContentSchema,
       exclude: groupExcludeSchema
@@ -21,7 +23,8 @@ module.exports = {
   },
   validator: {
     group: {
-      init: Validator(groupInitSchema),
+      initRoot: Validator(groupInitRootSchema),
+      initEpoch: Validator(groupInitEpochSchema),
       addMember: Validator(groupAddMemberSchema),
       content: Validator(groupContentSchema),
       exclude: Validator(groupExcludeSchema)

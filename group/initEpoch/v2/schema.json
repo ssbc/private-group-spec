@@ -4,7 +4,8 @@
     "type",
     "version",
     "groupKey",
-    "tangles"
+    "tangles",
+    "recps"
   ],
   "properties": {
     "type": {
@@ -22,16 +23,16 @@
       "type": "object",
       "required": [
         "group",
-        "members",
-        "epoch"
+        "epoch",
+        "members"
       ],
       "additionalProperties": false,
       "properties": {
         "group": {
-          "$ref": "#/definitions/tangle/any"
+          "$ref": "#/definitions/tangle/update"
         },
         "epoch": {
-          "$ref": "#/definitions/tangle/any"
+          "$ref": "#/definitions/tangle/update"
         },
         "members": {
           "$ref": "#/definitions/tangle/root"
@@ -57,6 +58,14 @@
     "groupKey": {
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "groupId": {
+      "type": "string",
+      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "feedId": {
+      "type": "string",
+      "pattern": "^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
     "messageId": {
       "type": "string",
