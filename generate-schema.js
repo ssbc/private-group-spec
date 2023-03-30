@@ -7,6 +7,7 @@ const fs = require('fs')
 
 const types = [
   'group/initRoot/v2',
+  'group/initEpoch/v2',
   'group/add-member/v2',
   'group/content',
   'group/exclude'
