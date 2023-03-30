@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const isValid = require('../').validator.group.init
+const isValid = require('../').validator.group.initRoot
 const { MsgId, GroupKey, GroupId, FeedId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
