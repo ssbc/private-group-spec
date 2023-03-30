@@ -21,7 +21,7 @@ var plainText = {
     },
     epoch: {
       root: groupRoot,
-      previous: [groupRoot]
+      previous: [lastGroupInitOnPreviousEpoch]
     }
     members: {
       root: null,
@@ -34,6 +34,6 @@ var plainText = {
 
 Note the differences between the root init msg (the "zero epoch") and epoch init messages:
 * The group tangle is not null and like normal, points at the group root and the latest messages.
-* The epoch tangle is not null and points at the root msg as well as the init for the last epoch. In this example this is the first new epoch so the `previous` is the group root msg.
+* The epoch tangle is not null and points at the root msg as well as the init for the last epoch.
 * The members tangle is always null in "group/init" messages, since that tangle is reset there.
 * Recps is defined, and includes the group id as well as your own root feed id.
