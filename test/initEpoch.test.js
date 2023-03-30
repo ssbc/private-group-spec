@@ -1,9 +1,9 @@
-// SPDX-FileCopyrightText: 2022 Mix Irving
+// SPDX-FileCopyrightText: 2023 Mix Irving
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const isValid = require('../').validator.group.initRoot
+const isValid = require('../').validator.group.initEpoch
 const { MsgId, GroupKey, GroupId, FeedId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
@@ -13,22 +13,23 @@ const Mock = (overwrite = {}) => {
     groupKey: GroupKey(),
     tangles: {
       group: {
-        root: null,
-        previous: null
+        root: MsgId(),
+        previous: [MsgId(), MsgId()]
       },
       epoch: {
-        root: null,
-        previous: null
+        root: MsgId(),
+        previous: [MsgId()]
       },
       members: {
         root: null,
         previous: null
       }
-    }
+    },
+    recps: [GroupId(), FeedId()]
   }
   return Object.assign(base, overwrite)
 }
-test('is-group-init', (t) => {
+test('is-epoch-init', (t) => {
   t.true(isValid(Mock()), 'fully featured')
   if (isValid.errors) throw isValid.errorsString
 
@@ -58,6 +59,12 @@ test('is-group-init', (t) => {
   const missingMembers = Mock()
   delete missingMembers.tangles.members
   t.false(isValid(missingMembers), 'fails if members missing')
+
+  // TODO: bad recps
+
+  // TODO: bad key
+
+  // TODO: e.g. groupId in tangle root
 
   t.end()
 })
