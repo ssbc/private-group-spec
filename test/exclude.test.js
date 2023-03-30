@@ -43,7 +43,7 @@ test('exclude message', (t) => {
 
   const manyExcludes = []
   for (let i = 0; i < 17; i++) manyExcludes.push(FeedId())
-  t.false(
+  t.true(
     isValid({
       ...base,
       excludes: manyExcludes

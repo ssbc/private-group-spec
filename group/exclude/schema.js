@@ -15,8 +15,7 @@ module.exports = {
     excludes: {
       type: 'array',
       items: [{ $ref: '#/definitions/feedId' }],
-      minItems: 1,
-      maxItems: 16
+      minItems: 1
     },
     recps: {
       type: 'array',
