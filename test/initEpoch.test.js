@@ -60,11 +60,20 @@ test('is-epoch-init', (t) => {
   delete missingMembers.tangles.members
   t.false(isValid(missingMembers), 'fails if members missing')
 
-  // TODO: bad recps
+  const badRecps = Mock()
+  badRecps.recps[1] = GroupId()
+  t.false(isValid(badRecps), 'fails if encrypted to several groups, not self')
 
-  // TODO: bad key
+  const badKey = Mock()
+  badKey.groupKey = 'potato'
+  t.false(isValid(badKey), 'fails if bad groupKey')
 
-  // TODO: e.g. groupId in tangle root
+  const badRoot = Mock()
+  badRoot.tangles.group.root = GroupId()
+  t.false(
+    isValid(badRoot),
+    'fails if a tangle root is a groupId and not a msg id'
+  )
 
   t.end()
 })
