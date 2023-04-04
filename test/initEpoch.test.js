@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: 2022 Mix Irving
+// SPDX-FileCopyrightText: 2023 Mix Irving
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const isValid = require('../').validator.group.init
-const { GroupKey } = require('./helpers')
+const isValid = require('../').validator.group.initEpoch
+const { MsgId, GroupKey, GroupId, FeedId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
@@ -13,18 +13,23 @@ const Mock = (overwrite = {}) => {
     groupKey: GroupKey(),
     tangles: {
       group: {
-        root: null,
-        previous: null
+        root: MsgId(),
+        previous: [MsgId(), MsgId()]
+      },
+      epoch: {
+        root: MsgId(),
+        previous: [MsgId()]
       },
       members: {
         root: null,
         previous: null
       }
-    }
+    },
+    recps: [GroupId(), FeedId()]
   }
   return Object.assign(base, overwrite)
 }
-test('is-group-init', (t) => {
+test('is-epoch-init', (t) => {
   t.true(isValid(Mock()), 'fully featured')
   if (isValid.errors) throw isValid.errorsString
 
@@ -41,12 +46,12 @@ test('is-group-init', (t) => {
   t.false(isValid(wrongTangle), 'fails if wrong tangle')
 
   const wrongRoot = Mock()
-  wrongRoot.tangles.group.root = '%yap'
-  t.false(isValid(wrongRoot), 'fails if wrong tangle.root')
+  wrongRoot.tangles.members.root = '%yap'
+  t.false(isValid(wrongRoot), 'fails if wrong members.root')
 
   const wrongPrev = Mock()
-  wrongPrev.tangles.group.previous = ['%yip', '%yap']
-  t.false(isValid(wrongPrev), 'fails if wrong tangle.previous')
+  wrongPrev.tangles.members.previous = ['%yip', '%yap']
+  t.false(isValid(wrongPrev), 'fails if wrong members.previous')
 
   const extrajunk = Mock({ name: 'doop' })
   t.false(isValid(extrajunk), 'fails if anything is added')
@@ -54,6 +59,21 @@ test('is-group-init', (t) => {
   const missingMembers = Mock()
   delete missingMembers.tangles.members
   t.false(isValid(missingMembers), 'fails if members missing')
+
+  const badRecps = Mock()
+  badRecps.recps[1] = GroupId()
+  t.false(isValid(badRecps), 'fails if encrypted to several groups, not self')
+
+  const badKey = Mock()
+  badKey.groupKey = 'potato'
+  t.false(isValid(badKey), 'fails if bad groupKey')
+
+  const badRoot = Mock()
+  badRoot.tangles.group.root = GroupId()
+  t.false(
+    isValid(badRoot),
+    'fails if a tangle root is a groupId and not a msg id'
+  )
 
   t.end()
 })

@@ -1,19 +1,16 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "required": [
     "type",
     "version",
     "groupKey",
-    "root",
-    "creator",
-    "recps",
-    "tangles"
+    "tangles",
+    "recps"
   ],
   "properties": {
     "type": {
       "type": "string",
-      "pattern": "^group/add-member$"
+      "pattern": "^group/init$"
     },
     "version": {
       "type": "string",
@@ -22,42 +19,38 @@
     "groupKey": {
       "$ref": "#/definitions/groupKey"
     },
-    "root": {
-      "$ref": "#/definitions/messageId"
-    },
-    "creator": {
-      "$ref": "#/definitions/feedId"
-    },
-    "text": {
-      "type": "string"
+    "tangles": {
+      "type": "object",
+      "required": [
+        "group",
+        "epoch",
+        "members"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "group": {
+          "$ref": "#/definitions/tangle/update"
+        },
+        "epoch": {
+          "$ref": "#/definitions/tangle/update"
+        },
+        "members": {
+          "$ref": "#/definitions/tangle/root"
+        }
+      }
     },
     "recps": {
       "type": "array",
       "items": [
         {
           "$ref": "#/definitions/groupId"
-        }
-      ],
-      "additionalItems": {
-        "$ref": "#/definitions/feedId"
-      },
-      "minItems": 2,
-      "maxItems": 16
-    },
-    "tangles": {
-      "type": "object",
-      "required": [
-        "group",
-        "members"
-      ],
-      "properties": {
-        "group": {
-          "$ref": "#/definitions/tangle/update"
         },
-        "members": {
-          "$ref": "#/definitions/tangle/update"
+        {
+          "$ref": "#/definitions/feedId"
         }
-      }
+      ],
+      "minItems": 2,
+      "maxItems": 2
     }
   },
   "additionalProperties": false,
@@ -66,20 +59,35 @@
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
-    "messageId": {
+    "groupId": {
       "type": "string",
-      "$comment": "42 chars + 1 char from a limited subset (last bits are 0) + 1 =",
-      "pattern": "^ssb:message/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
     "feedId": {
       "type": "string",
       "pattern": "^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
-    "groupId": {
+    "messageId": {
       "type": "string",
-      "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+      "$comment": "42 chars + 1 char from a limited subset (last bits are 0) + 1 =",
+      "pattern": "^ssb:message/classic/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
     },
     "tangle": {
+      "root": {
+        "type": "object",
+        "required": [
+          "root",
+          "previous"
+        ],
+        "properties": {
+          "root": {
+            "type": "null"
+          },
+          "previous": {
+            "type": "null"
+          }
+        }
+      },
       "update": {
         "type": "object",
         "required": [
@@ -100,6 +108,16 @@
             "minItems": 1
           }
         }
+      },
+      "any": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/tangle/root"
+          },
+          {
+            "$ref": "#/definitions/tangle/update"
+          }
+        ]
       }
     }
   }

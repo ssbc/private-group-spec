@@ -1,14 +1,24 @@
 {
-  "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "required": [
     "type",
+    "excludes",
     "recps",
     "tangles"
   ],
   "properties": {
     "type": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^group/exclude$"
+    },
+    "excludes": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/feedId"
+        }
+      ],
+      "minItems": 1
     },
     "recps": {
       "type": "array",
@@ -23,16 +33,26 @@
     "tangles": {
       "type": "object",
       "required": [
-        "group"
+        "group",
+        "members"
       ],
+      "additionalProperties": false,
       "properties": {
         "group": {
+          "$ref": "#/definitions/tangle/update"
+        },
+        "members": {
           "$ref": "#/definitions/tangle/update"
         }
       }
     }
   },
+  "additionalProperties": false,
   "definitions": {
+    "feedId": {
+      "type": "string",
+      "pattern": "^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"
+    },
     "groupId": {
       "type": "string",
       "pattern": "^ssb:identity/group/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$"

@@ -35,7 +35,7 @@ const tangle = {
       root: { $ref: '#/definitions/messageId' },
       previous: {
         type: 'array',
-        item: { $ref: '#/definitions/messageId' },
+        items: [{ $ref: '#/definitions/messageId' }],
         minItems: 1
       }
     }
@@ -76,7 +76,7 @@ module.exports = {
       tangle: {
         root: tangle.root,
         update: tangle.update,
-        any: tangle.update
+        any: tangle.any
       }
     }
   }
