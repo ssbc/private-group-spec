@@ -10,7 +10,7 @@ const types = [
   'group/initEpoch/v2',
   'group/add-member/v2',
   'group/content',
-  'group/exclude'
+  'group/exclude-member',
 ]
 
 module.exports = types

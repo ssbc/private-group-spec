@@ -3,11 +3,11 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const test = require('tape')
-const isValid = require('../').validator.group.exclude
+const isValid = require('../').validator.group.excludeMember
 const { GroupId, FeedId, MsgId } = require('./helpers')
 
 const base = {
-  type: 'group/exclude',
+  type: 'group/exclude-member',
   excludes: [FeedId(), FeedId()],
   recps: [GroupId()],
   tangles: {

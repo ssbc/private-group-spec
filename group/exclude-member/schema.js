@@ -10,7 +10,7 @@ module.exports = {
   properties: {
     type: {
       type: 'string',
-      pattern: '^group/exclude$'
+      pattern: '^group/exclude-member$'
     },
     excludes: {
       type: 'array',
