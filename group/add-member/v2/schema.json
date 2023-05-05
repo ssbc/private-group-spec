@@ -5,6 +5,7 @@
     "type",
     "version",
     "secret",
+    "oldSecrets",
     "root",
     "creator",
     "recps",
@@ -21,6 +22,15 @@
     },
     "secret": {
       "$ref": "#/definitions/secret"
+    },
+    "oldSecrets": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/secret"
+        }
+      ],
+      "minItems": 0
     },
     "root": {
       "$ref": "#/definitions/messageId"

@@ -17,6 +17,7 @@ module.exports = {
     'type',
     'version',
     'secret',
+    'oldSecrets',
     'root',
     'creator',
     'recps',
@@ -32,6 +33,11 @@ module.exports = {
       pattern: '^v2$'
     },
     secret: { $ref: '#/definitions/secret' },
+    oldSecrets: {
+      type: 'array',
+      items: [{ $ref: '#/definitions/secret' }],
+      minItems: 0
+    },
     root: { $ref: '#/definitions/messageId' },
     creator: { $ref: '#/definitions/feedId' },
     text: { type: 'string' },
