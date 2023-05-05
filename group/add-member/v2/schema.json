@@ -29,7 +29,7 @@
           "$ref": "#/definitions/secret"
         }
       ],
-      "minItems": 1
+      "minItems": 0
     },
     "root": {
       "$ref": "#/definitions/messageId"

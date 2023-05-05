@@ -44,7 +44,7 @@ var content = {
 Notes:
 
 - `secret` is the symmetric key for this epoch
-- `oldSecrets` is an array of all secrets of all predecessor epochs to this epoch, all the way back to the root epoch. Only there when initially adding someone to a group, it should be undefined on re-additions.
+- `oldSecrets` is an array of all secrets of all predecessor epochs to this epoch, all the way back to the root epoch. Should be undefined or at least empty on re-additions.
 - when initially adding someone to a group, there should be one add-member message per tip epoch. this is to make it clear to the people in that epoch what the members of that epoch are. this is also why `oldSecrets` only should contain secrets of predecessor epochs, not of parallel fork epochs
 - `root` is the same as `tangles.group.root`
   - the redundancy is here to make it more obvious which root you should be using the compute `group_id`

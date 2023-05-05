@@ -102,7 +102,7 @@ test('is-group-add-member', (t) => {
 
   const emptyOld = Mock()
   emptyOld.oldSecrets = []
-  t.false(isValid(emptyOld), 'disallows empty oldSecrets')
+  t.true(isValid(emptyOld), 'allows empty oldSecrets')
 
   t.end()
 })
