@@ -98,11 +98,11 @@ test('is-group-add-member', (t) => {
 
   const noOld = Mock()
   noOld.oldSecrets = undefined
-  t.false(isValid(noOld), 'fails on missing oldSecrets')
+  t.true(isValid(noOld), 'can have missing oldSecrets (e.g. on re-additions)')
 
   const emptyOld = Mock()
   emptyOld.oldSecrets = []
-  t.true(isValid(emptyOld), 'allows empty oldSecrets')
+  t.false(isValid(emptyOld), 'disallows empty oldSecrets')
 
   t.end()
 })
