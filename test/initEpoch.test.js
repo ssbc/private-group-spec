@@ -4,13 +4,13 @@
 
 const test = require('tape')
 const isValid = require('../').validator.group.initEpoch
-const { MsgId, GroupKey, GroupId, FeedId } = require('./helpers')
+const { MsgId, Secret, GroupId, FeedId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/init',
     version: 'v2',
-    groupKey: GroupKey(),
+    secret: Secret(),
     tangles: {
       group: {
         root: MsgId(),
@@ -65,8 +65,8 @@ test('is-epoch-init', (t) => {
   t.false(isValid(badRecps), 'fails if encrypted to several groups, not self')
 
   const badKey = Mock()
-  badKey.groupKey = 'potato'
-  t.false(isValid(badKey), 'fails if bad groupKey')
+  badKey.secret = 'potato'
+  t.false(isValid(badKey), 'fails if bad secret')
 
   const badRoot = Mock()
   badRoot.tangles.group.root = GroupId()

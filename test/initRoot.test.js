@@ -4,13 +4,13 @@
 
 const test = require('tape')
 const isValid = require('../').validator.group.initRoot
-const { GroupKey, MsgId, GroupId } = require('./helpers')
+const { Secret, MsgId, GroupId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/init',
     version: 'v2',
-    groupKey: GroupKey(),
+    secret: Secret(),
     tangles: {
       group: {
         root: null,

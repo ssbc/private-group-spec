@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 const {
-  groupKey,
+  secret,
   messageId,
   feedId,
   groupId,
@@ -16,7 +16,7 @@ module.exports = {
   required: [
     'type',
     'version',
-    'groupKey',
+    'secret',
     'root',
     'creator',
     'recps',
@@ -31,7 +31,7 @@ module.exports = {
       type: 'string',
       pattern: '^v2$'
     },
-    groupKey: { $ref: '#/definitions/groupKey' },
+    secret: { $ref: '#/definitions/secret' },
     root: { $ref: '#/definitions/messageId' },
     creator: { $ref: '#/definitions/feedId' },
     text: { type: 'string' },
@@ -53,7 +53,7 @@ module.exports = {
   },
   additionalProperties: false,
   definitions: {
-    ...groupKey,
+    ...secret,
     ...messageId,
     ...feedId,
     ...groupId,

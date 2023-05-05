@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { groupKey, tangle } = require('../../definitions')
+const { secret, tangle } = require('../../definitions')
 
 module.exports = {
   type: 'object',
-  required: ['type', 'version', 'groupKey', 'tangles'],
+  required: ['type', 'version', 'secret', 'tangles'],
   properties: {
     type: {
       type: 'string',
@@ -16,7 +16,7 @@ module.exports = {
       type: 'string',
       pattern: '^v2$'
     },
-    groupKey: { $ref: '#/definitions/groupKey' },
+    secret: { $ref: '#/definitions/secret' },
     tangles: {
       type: 'object',
       required: ['group', 'epoch', 'members'],
@@ -29,7 +29,7 @@ module.exports = {
   },
   additionalProperties: false,
   definitions: {
-    ...groupKey,
+    ...secret,
     ...tangle.root
   }
 }

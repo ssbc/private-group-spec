@@ -14,7 +14,7 @@ const feedId = {
   pattern: '^ssb:feed/bendybutt-v1/[a-zA-Z0-9_\\-]{42}[AEIMQUYcgkosw048]=$'
 }
 
-const groupKey = {
+const secret = {
   type: 'string',
   pattern: '^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$'
 }
@@ -58,7 +58,7 @@ module.exports = {
   messageId: { messageId },
   groupId: { groupId },
   feedId: { feedId },
-  groupKey: { groupKey },
+  secret: { secret },
   tangle: {
     root: {
       tangle: {

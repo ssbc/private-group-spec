@@ -26,7 +26,7 @@ var prevMsgId = 'ssb:message/classic/Zz-Inkte70Qz1UVKUHIhOgo16Oj_n37PfgmIzLDBgZw
 var feed_id = ... BFE binary encoding of feed_id
 var prev_msg_id = ... BFE binary encoding of feed_id
 
-var group_key = {
+var group_secret = {
   key: group_buffer, // group_buffer is symmetric key as buffer
   scheme: 'envelope-large-symmetric-group'
 }
@@ -40,7 +40,7 @@ var msg_key =  ... make up a one use key for the msg as a buffer
 var plainText = {
   type: 'group/init'
   version: 'v2',
-  groupKey: group_key.toString('base64'),
+  secret: group_secret.toString('base64'),
   tangles: {
     group: {
       root: null,

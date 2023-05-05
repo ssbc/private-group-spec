@@ -3,7 +3,7 @@
   "required": [
     "type",
     "version",
-    "groupKey",
+    "secret",
     "tangles",
     "recps"
   ],
@@ -16,8 +16,8 @@
       "type": "string",
       "pattern": "^v2$"
     },
-    "groupKey": {
-      "$ref": "#/definitions/groupKey"
+    "secret": {
+      "$ref": "#/definitions/secret"
     },
     "tangles": {
       "type": "object",
@@ -55,7 +55,7 @@
   },
   "additionalProperties": false,
   "definitions": {
-    "groupKey": {
+    "secret": {
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
