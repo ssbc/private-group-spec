@@ -2,13 +2,19 @@
 
 :warning: schema.json is generated so don't modify it directly
 
-This is about adding people to your group
+This is about adding people to your group, or 
+
+
 
 ```js
 var content = {
   type: "group/add-member",
   version: "v2",
   secret: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
+  oldSecrets: [
+    "apple1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
+    "potatoylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc="
+  ],
   root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
   creator: "ssb:feed/bendybutt-v1/VuVXdhDTHxjTGPuXvvxnbnAV7xcmoNtDDN0j3UTxcd8=",
   text: "welcome keks!", // optional
@@ -37,7 +43,9 @@ var content = {
 
 Notes:
 
-- `secret` is the symmetric key for the group
+- `secret` is the symmetric key for this epoch
+- `oldSecrets` is an array of all secrets of all predecessor epochs to this epoch, all the way back to the root epoch. Should be undefined or at least empty on re-additions.
+- when initially adding someone to a group, there should be one add-member message per tip epoch. this is to make it clear to the people in that epoch what the members of that epoch are. this is also why `oldSecrets` only should contain secrets of predecessor epochs, not of parallel fork epochs
 - `root` is the same as `tangles.group.root`
   - the redundancy is here to make it more obvious which root you should be using the compute `group_id`
   - in the future our tangles may be _cloaked_ which means this key would become more important

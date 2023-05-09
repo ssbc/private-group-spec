@@ -13,6 +13,7 @@ const Mock = (overwrite = {}) => {
     type: 'group/add-member',
     version: 'v2',
     secret: Secret(),
+    oldSecrets: [Secret(), Secret()],
     root: groupRoot,
     creator: FeedId(),
     text: 'welcome keks!', // optional
@@ -94,6 +95,14 @@ test('is-group-add-member', (t) => {
   sigilLink.tangles.group.root =
     '%shGMltJNglMNLpxdnDGz/Y+j6HukBelnCS84D+GR2DM=.sha256'
   t.false(isValid(sigilLink), 'fails if a link is a sigil link and not a uri')
+
+  const noOld = Mock()
+  noOld.oldSecrets = undefined
+  t.true(isValid(noOld), 'can have missing oldSecrets (e.g. on re-additions)')
+
+  const emptyOld = Mock()
+  emptyOld.oldSecrets = []
+  t.true(isValid(emptyOld), 'allows empty oldSecrets')
 
   t.end()
 })
