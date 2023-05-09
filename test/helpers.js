@@ -8,7 +8,7 @@ const key = () =>
     .replace(/\//g, '_')
     .replace(/\+/g, '-')
 
-const GroupKey = () => new SecretKey().toString()
+const Secret = () => new SecretKey().toString()
 
 const GroupId = () => `ssb:identity/group/${key()}`
 const FeedId = () => `ssb:feed/bendybutt-v1/${key()}`
@@ -16,7 +16,7 @@ const MsgId = () => `ssb:message/classic/${key()}`
 
 module.exports = {
   key,
-  GroupKey,
+  Secret,
   GroupId,
   FeedId,
   MsgId

@@ -8,7 +8,7 @@ This is about adding people to your group
 var content = {
   type: "group/add-member",
   version: "v2",
-  groupKey: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
+  secret: "3YUat1ylIUVGaCjotAvof09DhyFxE8iGbF6QxLlCWWc=",
   root: "ssb:message/classic/THxjTGPuXvvxnbnAV7xVuVXdhDcmoNtDDN0j3UTxcd8=",
   creator: "ssb:feed/bendybutt-v1/VuVXdhDTHxjTGPuXvvxnbnAV7xcmoNtDDN0j3UTxcd8=",
   text: "welcome keks!", // optional
@@ -37,7 +37,7 @@ var content = {
 
 Notes:
 
-- `groupKey` is the symmetric key for the group
+- `secret` is the symmetric key for the group
 - `root` is the same as `tangles.group.root`
   - the redundancy is here to make it more obvious which root you should be using the compute `group_id`
   - in the future our tangles may be _cloaked_ which means this key would become more important

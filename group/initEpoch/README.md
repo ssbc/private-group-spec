@@ -13,7 +13,7 @@ const groupId = 'ssb:identity/group/g_JTmMEjG4JP2aQAO0LM8tIoRtNkTq07Se6h1qwnQKb=
 var plainText = {
   type: 'group/init'
   version: 'v2',
-  groupKey: group_key.toString('base64'),
+  secret: group_secret.toString('base64'),
   tangles: {
     group: {
       root: groupRoot,

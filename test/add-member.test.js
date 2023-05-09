@@ -4,7 +4,7 @@
 
 const test = require('tape')
 const isValid = require('../').validator.group.addMember
-const { GroupKey, GroupId, FeedId, MsgId } = require('./helpers')
+const { Secret, GroupId, FeedId, MsgId } = require('./helpers')
 
 const Mock = (overwrite = {}) => {
   const groupRoot = MsgId()
@@ -12,7 +12,7 @@ const Mock = (overwrite = {}) => {
   const base = {
     type: 'group/add-member',
     version: 'v2',
-    groupKey: GroupKey(),
+    secret: Secret(),
     root: groupRoot,
     creator: FeedId(),
     text: 'welcome keks!', // optional

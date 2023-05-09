@@ -4,7 +4,7 @@
   "required": [
     "type",
     "version",
-    "groupKey",
+    "secret",
     "root",
     "creator",
     "recps",
@@ -19,8 +19,8 @@
       "type": "string",
       "pattern": "^v2$"
     },
-    "groupKey": {
-      "$ref": "#/definitions/groupKey"
+    "secret": {
+      "$ref": "#/definitions/secret"
     },
     "root": {
       "$ref": "#/definitions/messageId"
@@ -62,7 +62,7 @@
   },
   "additionalProperties": false,
   "definitions": {
-    "groupKey": {
+    "secret": {
       "type": "string",
       "pattern": "^[a-zA-Z0-9\\/+]{42}[AEIMQUYcgkosw048]=$"
     },
