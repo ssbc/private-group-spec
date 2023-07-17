@@ -99,3 +99,9 @@ Could modify this spec:
 3. - same
 4. supports privacy fiendly disclosing of message content
    - all internal cypherlinks are "cloaked"
+
+## Security considerations
+
+While we have tried our best to create a secure end-to-end encrypted communication protocol, this spec is not fit for use in safety critical situations. The specification has not been vetted by an independent party. Even assuming a bugfree spec, we have intentionally left out several security features that are considered state of the art in other apps such as Signal.
+
+Because of this, we advise that anyone that implements this spec in an app, includes prominent UI that warns the user about possible risks.
